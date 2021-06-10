@@ -1,0 +1,4 @@
+<!--pages/help/help.wxml-->
+<view>
+  <image mode='widthFix' style='width:100%;' src='https://wxb.whwangdoudou.cn/mp/img/help.jpg'></image>
+</view>

@@ -1,0 +1,158 @@
+<!--pages/team/team.wxml-->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view style="background-color: #ffffff; margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+    <view style="padding: 15px;">
+      <image src="../../image/mine_fans.png" style="width: 23px; height: 23px; vertical-align: text-bottom; padding-right: 8px;"></image>
+      <text style="color: #FF9705;">我的团队</text>
+    </view>
+    <view style="background-color: #f1f1f1; height: 1px;"></view>
+    <view style="display: flex; justify-content: space-between; align-items:center; padding: 24px;">
+      <navigator url="./member/member?type=count" hover-class="none">
+        <button form-type='submit' style="width: {{windowWidth/3}}px; height: {{windowWidth/3}}px; border-radius: {{windowWidth/3}}px; border: solid 12px #FFCB4A; display: flex; flex-direction: column; justify-content: center; align-items:center;background:transparent;line-height:1.4;">
+          <text>总人数</text>
+          <text>{{team.team_member_count}}人</text>
+        </button>
+      </navigator>
+      <navigator url="./member/member?type=vip" hover-class="none">
+        <button form-type='submit' style="width: {{windowWidth/3}}px; height: {{windowWidth/3}}px; border-radius: {{windowWidth/3}}px; border: solid 12px #CECFCE; display: flex; flex-direction: column; justify-content: center; align-items:center;background:transparent;line-height:1.4;">
+          <text>VIP会员</text>
+          <text>{{team.team_vip_count}}人</text>
+        </button>
+      </navigator>
+    </view>
+    <view style="background-color: #f1f1f1; height: 1px;"></view>
+    <view style="display: flex; flex-direction: row; justify-content: space-between; align-items:center; padding: 15px;">
+      <navigator url="./member/member?type=today" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_member_today}}人</text>
+          <text style="margin-top: 15px;">今日</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./member/member?type=yesterday" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_member_yesterday}}人</text>
+          <text style="margin-top: 15px;">昨日</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./member/member?type=direct" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_direct_count}}人</text>
+          <text style="margin-top: 15px;">直属会员</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./member/member?type=direct_sub" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_direct_sub_count}}人</text>
+          <text style="margin-top: 15px;">直属会员下级</text>
+        </button>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- add by yanyingjie 2018-03-26 begin -->
+
+  <!-- 团队订单  -->
+  <view style="background-color: #ffffff; margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+    <view style="padding: 15px;">
+      <image src="../../image/mine_order.png" style="width: 23px; height: 23px; vertical-align: text-bottom; padding-right: 8px;"></image>
+      <text style="color: #FF9705;">团队订单</text>
+    </view>
+    <view style="background-color: #f1f1f1; height: 1px;"></view>
+    <navigator url="./order/order?type=count" hover-class="none">
+      <button form-type='submit' style="display:flex;justify-content:space-between;padding:20px 10px;background:transparent;">
+        <text style="">订单总数</text>
+        <text style="">{{team.team_order_count}}</text>
+      </button>
+    </navigator>
+    <view style="background-color: #f1f1f1; height: 1px;"></view>
+    <view style="display: flex; flex-direction: row; justify-content: space-between; align-items:center; padding: 15px;">
+      <navigator url="./order/order?type=today" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_order_today}}</text>
+          <text style="margin-top: 15px;">今日订单</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./order/order?type=yesterday" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_order_yesterday}}</text>
+          <text style="margin-top: 15px;">昨日订单</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./order/order?type=this_month" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_order_this_month}}</text>
+          <text style="margin-top: 15px;">本月订单</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./order/order?type=last_month" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_order_last_month}}</text>
+          <text style="margin-top: 15px;">上月订单</text>
+        </button>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- 团队贡献收入  -->
+  <view style="background-color: #ffffff; margin-top: 10px;margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
+    <view style="padding: 15px;">
+      <image src="../../image/mine_money.png" style="width: 23px; height: 23px; vertical-align: text-bottom; padding-right: 8px;"></image>
+      <text style="color: #FF9705;">团队贡献收入</text>
+    </view>
+    <view style="background-color: #f1f1f1; height: 1px;"></view>
+    <navigator url="./income/income?type=sum" hover-class="none">
+      <button form-type='submit' style="display:flex;justify-content:space-between;padding:20px 10px;background:transparent;">
+        <text style="">总收入</text>
+        <text style="">{{team.team_income_sum}}</text>
+      </button>
+    </navigator>
+    <view style="background-color: #f1f1f1; height: 1px;"></view>
+    <view style="display: flex; flex-direction: row; justify-content: space-between; align-items:center; padding: 15px;">
+      <navigator url="./income/income?type=today" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_income_today}}</text>
+          <text style="margin-top: 15px;">今日收入</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./income/income?type=yesterday" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_income_yesterday}}</text>
+          <text style="margin-top: 15px;">昨日收入</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./income/income?type=this_month" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_income_this_month}}</text>
+          <text style="margin-top: 15px;">本月收入</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 1px; height: 60px;"></view>
+      <navigator url="./income/income?type=last_month" hover-class="none">
+        <button form-type='submit' style="display: flex; flex-direction: column; justify-content: space-between; align-items:center;background:transparent;">
+          <text>{{team.team_income_last_month}}</text>
+          <text style="margin-top: 15px;">上月收入</text>
+        </button>
+      </navigator>
+    </view>
+  </view>
+
+
+  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
+    bindtap='openShare'>
+    <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;margin:0;padding:0;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
+  </button>
+</form>
+<!-- add by yanyingjie 2018-03-26 end -->

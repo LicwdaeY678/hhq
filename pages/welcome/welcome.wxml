@@ -1,0 +1,55 @@
+<!--pages/welcome/welcome.wxml-->
+<view style='width:100%;height:100%;'>
+  <swiper style='width:100%;height:100%;'>
+    <swiper-item>
+      <image style='width:100%;height:100%;' src='../../image/hb1.png'></image>
+    </swiper-item> 
+    <swiper-item>
+      <image style='width:100%;height:100%;' src='../../image/hb2.png'></image>
+    </swiper-item>
+    <swiper-item>
+      <image style='width:100%;height:100%;' src='../../image/hb3.png'></image>
+    </swiper-item>
+    <swiper-item style='position:relative;'>
+      <image style='width:100%;height:100%;' src='../../image/hb4.png'></image>
+      <view bindtap='showGuide' style='width:150px;height:40px;line-height:40px;border-radius:20px;text-align:center;background:#f32a6a;color:#fff;position:absolute;bottom:30px;left:50%;transform:translateX(-50%);'>开始省钱</view>
+    </swiper-item>
+  </swiper>
+
+  <!--半透明层  -->
+  <view wx:if='{{flag}}' style='position:fixed;top:0;bottom:0;left:0;right:0;background:rgba(255,255,255,0.8);'>
+    <view style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;background:#fff;border-radius:10px;text-align:center;z-index:100;padding:15px;box-sizing:border-box;border:1rpx solid #f1f1f1;'>
+      <view style='margin-top:10px;'>选身份 更懂你</view>
+      <view style='font-size:15px;padding:20px 0px;'>我是</view>
+      <view style='display:flex;justify-content:space-between;align-items:center;'>
+        <view bindtap='choosePerson' data-item='{{item}}' wx:for='{{person}}' wx:key='{{index}}'>
+          <image class='{{item.name==nowPerson?"":"gary"}}' mode='widthFix' src='{{item.img}}' style='width:90px;'></image>
+        </view>
+      </view>
+
+      <view>
+        <view style='display:flex;justify-content:center;align-items:center;margin-top:25px;'>
+          <view style='flex:1;height:1px;background:#f35388;'></view>
+          <view style='flex:1;font-size:14px;'>职业选择</view>
+          <view style='flex:1;height:1px;background:#f35388;'></view>
+        </view>
+        <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;'>
+          <view wx:for='{{job}}' bindtap='chooseJob' data-item='{{item}}' wx:key='{{index}}' style='margin-top:10px;width:36%;text-align:center;height:30px;font-size:14px;border-radius:15px;line-height:30px;border:1rpx solid #f35388;' class='{{item==nowJob?"active":"notActive"}}'>{{item}}</view>
+        </view>
+      </view>
+
+      <view>
+        <view style='display:flex;justify-content:center;align-items:center;margin-top:25px;'>
+          <view style='flex:1;height:1px;background:#f35388;'></view>
+          <view style='flex:1;font-size:14px;'>人群选择</view>
+          <view style='flex:1;height:1px;background:#f35388;'></view>
+        </view>
+        <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;'>
+          <view wx:for='{{age}}' bindtap='chooseAge' data-item='{{item}}' wx:key='{{index}}' style='margin-top:10px;width:36%;text-align:center;height:30px;font-size:14px;border-radius:15px;line-height:30px;border:1rpx solid #f35388;' class='{{item==nowAge?"active":"notActive"}}'>{{item}}</view>
+        </view>
+      </view>
+
+      <view bindtap='confirmChoose' style='width:200px;text-align:center;height:36px;line-height:36px;border-radius:18px;background:#f35388;margin:20px auto 0px;color:#fff;font-size:16px;'>确定</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+/* pages/theme/theme.wxss */
+image{
+  vertical-align: bottom;
+}

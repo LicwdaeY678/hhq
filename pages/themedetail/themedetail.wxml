@@ -1,0 +1,43 @@
+<!--pages/themelist/themelist.wxml-->
+<view>
+  <view style='border-bottom:1px solid #f1f1f1;'>
+    <view style='width:100%'>
+      <image mode='widthFix' src='{{detail.image_url}}' style='width:100%'></image>
+    </view>
+    <view style='display:flex;justify-content:space-between;align-items:center;font-size:15px;padding:10px;box--sizing:border-box;'>
+      <view>{{detail.theme_name}}</view>
+      <view>商品{{detail.goods_num}}个</view>
+    </view>
+  </view>
+  <view>
+    <view>
+      <block wx:for="{{detail.result}}" wx:key="{{index}}">
+        <navigator url="/pages/details/details?itemid={{item.itemid}}" hover-class='none'>
+          <view class="title" style="width:100%;padding:15px;box-sizing:border-box;border-bottom:1rpx solid #f1f1f1;">
+            <button hover-class='none' style="display: flex; padding: 0px;border:none;border-color:transparent;background:#fff;margin:0;" form-type='submit'>
+
+              <view style="width:100px;height:100px;margin-right:10px;">
+                <image src="{{item.picurl}}" mode="widthFix" style="width: 100px;border-radius:6px;"></image>
+              </view>
+              <view style="width:100%;padding: 0px;display:flex;justify-content:space-between;flex-direction:column;">
+                <view class="goods_item_text" style='font-size:14px;'>
+                  <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;text-align:center;vertical-align:middle;line-height:16px;margin-right:5px;'>拼多多</view>{{item.title}}
+                </view>
+                <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding-top: 5px; padding-bottom: 5px; font-size: 24rpx; color: #999999;">
+                  <text style="text-decoration: line-through;">原价：￥{{item.original_price}}</text>
+                  <text style="padding-right: 5px;">已拼{{item.sum}}单</text>
+                </view>
+                <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                  <text style="color: #f42f19; font-size: 26rpx;font-weight:bold;">券后价：￥{{item.price}}</text>
+                  <text style="display: flex; justify-content: center; align-items: center;  width: 90px; height: 30px; background-image: url('{{coupon_image}}'); background-size:cover; background-repeat:no-repeat; font-size: 24rpx; color: #ffffff;">券 ￥{{item.coupon_price}}</text>
+                </view>
+              </view>
+
+            </button>
+
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

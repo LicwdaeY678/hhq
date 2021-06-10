@@ -1,0 +1,22 @@
+/* pages/detail/detail.wxss */
+@import '../../font/iconfont.wxss';
+.common {
+  font-size: 30rpx;
+}
+
+.gimage {
+  border-radius: 12rpx; 
+  border: solid 1px #f1f1f1;
+}
+
+.goods_item_text_single_line {
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle; */
+} 
+button::after {
+  border: 0;
+  border-radius:0;
+ 
+}

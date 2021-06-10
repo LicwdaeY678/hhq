@@ -1,0 +1,59 @@
+<!--pages/hot/hot.wxml-->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view class="stv-container">
+    <view class="tab-bar">
+      <button hover-class='none' form-type='submit' wx:for="{{tabs}}" wx:key="unique" data-item="{{item}}" data-index="{{index}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px;display:flex;align-items:center;background:transparent;font-size:14px;">
+        <text>{{item.name}}</text>
+        <view wx:if='{{item.name=="价格"}}' style='display:flex;align-items:center;'>
+          <image wx:if="{{item.status==0}}" mode='widthFix' style='width:22rpx;margin-left:5px;' src='../../image/h2_nr_normal.png'></image>
+          <image wx:if="{{item.status==1}}" mode='widthFix' style='width:22rpx;margin-left:5px;' src='../../image/h2_nr_down.png'></image>
+          <image wx:if="{{item.status==2}}" mode='widthFix' style='width:22rpx;margin-left:5px;' src='../../image/h2_nr_up.png'></image>
+        </view>
+      </button>
+      <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
+    </view>
+  </view>
+
+
+
+  <view>
+    <view style="display: flex; flex-direction: column; justify-content: center;">
+      <block wx:for="{{goods}}" wx:key="{{index}}">
+        <navigator url="/pages/details/details?itemid={{item.itemid}}" hover-class='none'>
+          <button hover-class='none' form-type='submit' class="title" style="width:100%;padding:15px;box-sizing:border-box;border-bottom:1rpx solid #f1f1f1;background:transparent;">
+            <view style="background-color: #ffffff;display:flex;">
+              <view style="width:100px;height:100px;margin-right:10px;">
+                <image src="{{item.picurl}}" mode="widthFix" style="width: 100px;border-radius:6px;"></image>
+              </view>
+              <view style="width:100%;padding: 0px;display:flex;justify-content:space-between;flex-direction:column;">
+                <view class="goods_item_text" style='font-size:14px;'>
+                  <!-- <image src="../../image/icon_pin.png" mode="aspectFit" style="width: 40rpx; height: 40rpx; padding-right: 10px; vertical-align: text-bottom;"></image> -->
+                  <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;vertical-align:middle;line-height:16px;margin-right:4px;text-align:center;'>拼多多</view>{{item.title}}
+                </view>
+                <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding-top: 5px; padding-bottom: 5px; font-size: 24rpx; color: #999999;">
+                  <text style="text-decoration: line-through;">原价：￥{{item.original_price}}</text>
+                  <text style="padding-right: 5px;">已拼{{item.sum}}单</text>
+                </view>
+                <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                  <text style="color: #f42f19; font-size: 26rpx;font-weight:bold;">券后价：￥{{item.price}}</text>
+                  <text style="display: flex; justify-content: center; align-items: center;  width: 90px; height: 30px; background-image: url('{{coupon_image}}'); background-size:cover; background-repeat:no-repeat; font-size: 24rpx; color: #ffffff;">券 ￥{{item.coupon_price}}</text>
+                </view>
+              </view>
+            </view>
+          </button>
+        </navigator>
+      </block>
+
+    </view>
+
+  </view>
+  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
+    bindtap='openShare'>
+    <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
+  </button>
+</form>

@@ -1,0 +1,22 @@
+/* pages/perfect/perfect.wxss */
+@import '../../font/iconfont.wxss';
+.active{
+  color:#f42f19;
+}
+.goods_item_text{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+button::after {
+    border-radius: 0;
+}
+button{
+  border-radius: 0;
+}

@@ -1,0 +1,4 @@
+<!--pages/goods_poster/goods_poster.wxml-->
+<view>
+  <image style='width:100%;' mode='widthFix' src='https://wxb.whwangdoudou.cn/mp/img/share_goods_help2.jpg'></image>
+</view>

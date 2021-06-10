@@ -1,0 +1,235 @@
+<!--index.wxml-->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view>
+    <!--搜索框  -->
+    <view style="width: 100%; height: 28px; position: fixed; top: 5px; left: 0; right: 0; z-index: 999;">
+      <view style="width: 100%; display: flex; justify-content: center; align-items:center;">
+        <view style="display: flex; justify-content: center; align-items:center; height: 28px; width: 90%; background-color: rgba(255,255,255,0.5); border-radius: 20px;">
+          <!-- <image  src="../../image/home_search_gray.png" mode="aspectFit" style="width: 30px; height: 30px;"></image> -->
+          <text style="width: 30px; height: 30px;font-size:24px;margin-top:3px;" bindtap='search_btn' class='icon iconfont icon-search'></text>
+          <input style="padding-left: 8px; font-size: 26rpx; min-width: 40%; height: 28px; background-color: transparent;" placeholder="搜索你想要的宝贝" unselectable="on" bindconfirm="searchGoods" bindinput='copy_words'></input>
+        </view>
+      </view>
+    </view>
+
+    <!--轮播图  -->
+    <view style='position:relative;'>
+      <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:360rpx;">
+        <block wx:for="{{background}}" wx:key="image">
+          <navigator url="/pages/help/help" hover-class='none'>
+            <swiper-item>
+              <image src="{{item.image}}" mode="widthFix" style="width: {{windowWidth}}px;" />
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+
+      <!--三分钟签到  -->
+      <view class='threemin' wx:if='{{clock_flag2}}' bindtap='tapclock' style='position:fixed;top:45px;right:20px;z-index:200;'>
+        <view style='height:20px;background:#fff047;color:#ff4e39;font-size:12px;padding:0px 15px 0px 20px;border-radius:12px;line-height:20px;'>领取</view>
+        <view style='position:absolute;left:-10px;width:26px;height:26px;border-radius:50%;background:#ffb31a;top:-3px;border:3px solid #ffe047;color:#fffe44;font-size:10px;box-sizing:border-box;text-align:center;line-height:20px;'>300</view>
+      </view>
+      <view class='threemin' wx:if='{{clock_flag1}}' style='position:fixed;top:45px;right:20px;z-index:200;'>
+        <view style='height:20px;background:#fff047;color:#ff4e39;font-size:12px;padding:0px 15px 0px 20px;border-radius:12px;line-height:20px;'>{{m}}:{{s}}</view>
+        <view style='position:absolute;left:-10px;width:26px;height:26px;border-radius:50%;background:#ffb31a;top:-3px;border:3px solid #ffe047;color:#fffe44;font-size:14px;box-sizing:border-box;text-align:center;line-height:20px;'>
+          <view class='icon iconfont icon-clock'></view>
+        </view>
+      </view>
+
+
+    </view>
+
+    <!-- <button style='width:90%;margin:0 auto;background:#f42f19;margin-top:10rpx;color:#fff;' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">getuserinfo</button> -->
+
+    <!--标语  -->
+    <view style="display: flex; justify-content:space-between; flex-wrap：nowrap; padding-top: 5px; padding-bottom: 5px;">
+      <view class="fsz" style="display: flex; justify-content:center; align-items:center; flex-wrap：nowrap; padding-left: 10px; padding-right: 18px">
+        <image src="../../image/home_right.png" mode="aspectFit" style="width: 18px; height: 18px;"></image>
+        <text>自用购物省钱</text>
+      </view>
+      <view class="fsz" style="display: flex; justify-content:center; align-items:center; flex-wrap：nowrap; padding-right: 18px">
+        <image src="../../image/home_right.png" mode="aspectFit" style="width: 18px; height: 18px;"></image>
+        <text>分享好友赚钱</text>
+      </view>
+      <view class="fsz" style="display: flex; justify-content:center; align-items:center; flex-wrap：nowrap; padding-right: 10px;">
+        <image src="../../image/home_right.png" mode="aspectFit" style="width: 18px; height: 18px;"></image>
+        <text>超值正品优惠</text>
+      </view>
+    </view>
+    <view style="background-color: #f1f1f1; height: 1px;"></view>
+
+    <!--分类  -->
+    <view>
+      <view class="category">
+        <view wx:for="{{category}}" wx:key="unique" wx:for-item="citem" style="display: flex; justify-content: center;padding:10rpx;">
+          <button hover-class='none' wx:for="{{citem}}" wx:key="unique" wx:for-item="nitem" wx:key="{{nitem.id}}" style="display: flex;flex:1; flex-direction: column; align-items:center; justify-content:space-between; padding:8px;border:none;border-color:transparent;background:transparent;font-size:14px;margin:0;"
+            bindtap="chooseCategory" data-id="{{nitem.id}}" class='{{_fid==nitem.id?"active":"a"}}' form-type='submit'>
+            <image src="{{nitem.image}}" mode="aspectFit" style="width: 100%;" mode='widthFix'></image>
+            <text style="padding-top: 8px;">{{nitem.title}}</text>
+          </button>
+        </view>
+      </view>
+    </view>
+    <view style="background-color: #f1f1f1; height: 5px;"></view>
+
+    <!-- <button open-type='getUserInfo'>getUserInfo</button> -->
+    <!-- <web-view src='https://wxb.whwangdoudou.cn/mp/index.html#/index'></web-view> -->
+
+    <!--排序  -->
+    <view class="stv-container">
+      <view class="tab-bar">
+        <button form-type='submit' wx:for="{{tabs}}" wx:key="unique" data-item="{{item}}" data-index="{{index}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px;display:flex;align-items:center;background:transparent;font-size:14px;">
+          <text>{{item.name}}</text>
+          <view wx:if='{{item.name=="价格"}}' style='display:flex;align-items:center;'>
+            <image wx:if="{{item.status==0}}" mode='widthFix' style='width:22rpx;margin-left:5px;' src='../../image/h2_nr_normal.png'></image>
+            <image wx:if="{{item.status==1}}" mode='widthFix' style='width:22rpx;margin-left:5px;' src='../../image/h2_nr_down.png'></image>
+            <image wx:if="{{item.status==2}}" mode='widthFix' style='width:22rpx;margin-left:5px;' src='../../image/h2_nr_up.png'></image>
+          </view>
+        </button>
+        <view style="width: {{stv.lineWidth}}px; transform:translateX({{stv.offset/tabs.length}}px)" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
+      </view>
+    </view>
+
+    <!--商品列表  -->
+    <view>
+      <view style="display: flex; flex-direction: column; justify-content: center;">
+        <block wx:for="{{goods}}" wx:key="{{index}}">
+          <navigator url="/pages/details/details?itemid={{item.itemid}}" hover-class='none'>
+            <view class="title" style="width:100%;padding:15px;box-sizing:border-box;border-bottom:1rpx solid #f1f1f1;">
+
+              <!-- <view style="background-color: #ffffff;display:flex;"> -->
+              <button hover-class='none' style="display: flex; padding: 0px;border:none;border-color:transparent;background:#fff;margin:0;" form-type='submit'>
+                <view style="width:240rpx;height:240rpx;position:relative;">
+                  <image src="{{item.picurl}}" mode="widthFix" style="width: 240rpx;height:240rpx;border-radius:12rpx;"></image>
+                  <view wx:if='{{item.hot==1}}' style='position:absolute;bottom:0;width:100%;background:#ff389b;color:#fff;font-size:12px;text-align:center;padding:12rpx 0;border-radius:0 0 12rpx 12rpx;'>VIP补贴{{item.pension}}元</view>
+                </view>
+                <view style="width:100%;padding: 0px;display:flex;justify-content:space-between;flex-direction:column;margin-left:20rpx;">
+                  <view class="goods_item_text" style='font-size:14px;'>
+                    <!-- <image src="../../image/icon_pin.png" mode="aspectFit" style="width: 40rpx; height: 40rpx; padding-right: 10px; vertical-align: text-bottom;"></image> -->
+                    <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;text-align:center;vertical-align:middle;line-height:16px;margin-right:5px;'>拼多多</view>{{item.title}}
+                  </view>
+                  <view style="display: flex; flex-direction: row;  align-items: center; padding-top: 5px; padding-bottom: 5px; font-size: 24rpx; color: #999999;">
+                    <!-- <view style="display: flex; justify-content: center; align-items: center;  width: 80px; height: 30px; line-height:30px;background-image: url('{{coupon_image}}'); background-size:cover;background-position:center center; background-repeat:no-repeat; font-size: 24rpx; color: #ffffff;">券 ￥{{item.coupon_price}}</view> -->
+                    <view style='border:1rpx solid #f42f19;color:#f42f19;border-radius:4px;padding:3px;'>{{item.coupon_price}}元优惠券</view>
+                    <text style="padding-right: 5px;margin-left:5px;">已拼{{item.sum}}单</text>
+                  </view>
+                  <view style="display: flex; flex-direction: row;  align-items: center;">
+                    <text style="color: #f42f19; font-size: 26rpx;font-weight:bold;">￥{{item.price}}</text>
+                    <text style="text-decoration: line-through;font-size:24rpx;color:#999;">￥{{item.original_price}}</text>
+                  </view>
+                  <view wx:if="{{item.yongjin_vip}}" style="display: flex; flex-direction: row;  align-items: center;font-size:24rpx;color:#fff;">
+                    <view class='zhuan' style="background: linear-gradient(to right,#ff389b,#ff8c5b);border-radius:4px;padding:10rpx 12rpx;">预估赚￥{{item.yongjin}}</view>
+                    <text style="background: linear-gradient(to right,#4a38f7,#b164fb);border-radius:4px;padding:10rpx 12rpx;margin-left:12rpx;">升级赚￥{{item.yongjin_vip}}</text>
+                  </view>
+                  <view wx:if="{{!item.yongjin_vip}}" style="display: flex; flex-direction: row;  align-items: center;font-size:24rpx;color:#fff;">
+                    <view class='zhuan' style="background: linear-gradient(to right,#ff389b,#ff8c5b);border-radius:4px;padding:10rpx 12rpx;">预估赚￥{{item.yongjin}}</view>
+                  </view>
+                </view>
+
+              </button>
+
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+
+    <!-- <navigator url='../detail/detail'>
+    <text>详情页</text>
+  </navigator> -->
+
+
+
+    <view style="display: flex; justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px; font-size: 28rpx;" wx:if="{{isEnd}}">
+      <view style="background-color: #9a9a9a; height: 1px; width: 75px;"></view>
+      <text style="color: #9a9a9a; padding-left: 10px; padding-right: 10px;">我是有底线的</text>
+      <view style="background-color: #9a9a9a; height: 1px; width: 75px;"></view>
+    </view>
+  </view>
+
+
+
+  <!--半透明遮罩层  -->
+  <button bindtap='close_toast' wx:if='{{show_toast}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/share.png'></image>
+  </button>
+
+  <button plain='true' class='contact' form-type='submit' style='border:none;width:100px;height:100px;' bindtap='openShare'>
+    <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;padding:0;margin:0;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
+    <!-- <button style='width:100%;height:100%;border:none;border-color:transparent;position:absolute;left:0px;top:0px;background:transparent;' size='mini' open-type='contact'></button> -->
+  </button>
+
+
+  <!--引导页 -->
+  <view style='width:100%;height:100%;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;' wx:if='{{show_toast3}}'>
+    <swiper style='width:100%;height:100%;'>
+      <swiper-item>
+        <image style='width:100%;height:100%;' src='https://wxb.whwangdoudou.cn/mp/img/hb1.jpg'></image>
+      </swiper-item>
+      <swiper-item>
+        <image style='width:100%;height:100%;' src='https://wxb.whwangdoudou.cn/mp/img/hb2.jpg'></image>
+      </swiper-item>
+      <swiper-item style='position:relative;'>
+        <image style='width:100%;height:100%;' src='https://wxb.whwangdoudou.cn/mp/img/hb3.jpg'></image>
+        <button hover-class='none' form-type='submit' bindtap='showGuide' style='width:150px;height:40px;border-radius:20px;text-align:center;background:#f32a6a;color:#fff;position:absolute;bottom:30px;left:50%;transform:translateX(-50%);'>开始省钱</button>
+      </swiper-item>
+    </swiper>
+
+    <!--半透明层  -->
+    <view wx:if='{{flag}}' style='position:fixed;top:0;bottom:0;left:0;right:0;background:rgba(255,255,255,0.8);'>
+      <view style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;background:#fff;border-radius:10px;text-align:center;z-index:100;padding:15px;box-sizing:border-box;border:1rpx solid #f1f1f1;'>
+        <view style='margin-top:10px;'>选身份 更懂你</view>
+        <view style='font-size:15px;padding:20px 0px;'>我是</view>
+        <view style='display:flex;justify-content:space-between;align-items:center;'>
+          <button hover-class='none' form-type='submit' bindtap='choosePerson' data-item='{{item}}' wx:for='{{person}}' wx:key='{{index}}'>
+            <image class='{{item.name==nowPerson?"":"gary"}}' mode='widthFix' src='{{item.img}}' style='width:90px;'></image>
+          </button>
+        </view>
+
+        <view>
+          <view style='display:flex;justify-content:center;align-items:center;margin-top:25px;'>
+            <view style='flex:1;height:1px;background:#f35388;'></view>
+            <view style='flex:1;font-size:14px;'>职业选择</view>
+            <view style='flex:1;height:1px;background:#f35388;'></view>
+          </view>
+          <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;'>
+            <button hover-class='none' form-type='submit' wx:for='{{job}}' bindtap='chooseJob' data-item='{{item}}' wx:key='{{index}}' style='margin-top:10px;width:36%;text-align:center;height:30px;font-size:14px;border-radius:15px;border:1rpx solid #f35388;padding:0px;line-height:30px;'
+              class='{{item==nowJob?"_active":"notActive"}}'>{{item}}</button>
+          </view>
+        </view>
+
+        <view>
+          <view style='display:flex;justify-content:center;align-items:center;margin-top:25px;'>
+            <view style='flex:1;height:1px;background:#f35388;'></view>
+            <view style='flex:1;font-size:14px;'>人群选择</view>
+            <view style='flex:1;height:1px;background:#f35388;'></view>
+          </view>
+          <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;'>
+            <button hover-class='none' form-type='submit' wx:for='{{age}}' bindtap='chooseAge' data-item='{{item}}' wx:key='{{index}}' style='margin-top:10px;width:36%;text-align:center;height:30px;font-size:14px;border-radius:15px;border:1rpx solid #f35388;padding:0px;line-height:30px;'
+              class='{{item==nowAge?"_active":"notActive"}}'>{{item}}</button>
+          </view>
+        </view>
+
+        <button hover-class='none' form-type='submit' bindtap='confirmChoose' style='width:200px;text-align:center;height:36px;line-height:36px;border-radius:18px;background:#f35388;margin:20px auto 0px;color:#fff;font-size:16px;padding:0;'>确定</button>
+      </view>
+    </view>
+  </view>
+
+
+  <!--新人红包  -->
+  <view wx:if='{{hb_flag}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);text-align:center;z-index:999;'>
+    <image bindtap='getGift' mode='widthFix' src='../../image/gift.png' style='width:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);'></image>
+  </view>
+
+  <!--提示用户签到  -->
+  <view wx:if='{{qd_flag}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;'>
+    <image bindtap='goToSign' mode='widthFix' src='../../image/qd.png' style='width:80%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);'></image>
+    <view bindtap='close_qd' style='position:absolute;top:15%;right:12%;color:#fff;border:1px solid #fff;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;'>×</view>
+  </view>
+
+</form>

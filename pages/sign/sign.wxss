@@ -1,0 +1,29 @@
+/* pages/sign/sign.wxss */
+
+@keyframes shake {
+  0% {
+    transform: rotate(1deg);
+  }
+
+  50% {
+    transform: rotate(-1deg);
+  }
+
+  100% {
+    transform: rotate(1deg);
+  }
+}
+
+.qd_btn {
+   animation: shake 0.5s infinite; 
+}
+
+.signed {
+  background: #ff8509;
+  color:#fff;
+}
+
+.unsigned {
+  color: #ff8509;
+  background: #fff5db;
+}

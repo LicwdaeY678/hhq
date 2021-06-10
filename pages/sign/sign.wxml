@@ -1,0 +1,132 @@
+<!--pages/sign/sign.wxml-->
+<view style='font-size:14px;'>
+  <view style='padding:30px 15px;box-sizing:border-box;background:#f42f19;color:#fff;position:relative;display:flex;align-items:center;font-size:15px;'>
+    <view>
+      <image src='{{info.picurl}}' mode='widthFix' style='width:60px;height:60px;border:2px solid #fff;border-radius:50%;'></image>
+    </view>
+    <view>
+      <view style='margin-left:20px;margin-bottom:5px;'>{{userinfo.username}}</view>
+      <view class='icon iconfont icon-financial_fill' style='margin-left:20px;'>{{info.goldcoin}}金币</view>
+    </view>
+  </view>
+
+  <view style='display:flex;flex-direction:column;padding:15px;box-sizing:border-box;'>
+    <view style='display:flex;justify-content:space-between;align-items:center;'>
+      <view style='display:flex;align-items:center;'>
+        <view style='font-size:16px;'>签到送金币</view>
+        <view style='font-size:12px;color:#aaa;margin-left:10px;'>2000金币=1元</view>
+      </view>
+      <view wx:if='{{!sign}}' bindtap='sign_in' class='qd_btn' style='width:100px;height:30px;background:#f42f19;line-height:30px;border-radius:15px;text-align:center;color:#fff;'>签到</view>
+      <view wx:if='{{sign}}' style='width:100px;height:30px;background:#f42f19;line-height:30px;border-radius:15px;text-align:center;color:#fff;'>今日已签到</view>
+    </view>
+    <view style='display:flex;justify-content:space-between;align-items:center;padding:20px 0px;color:#aaa;font-size:12px;'>
+      <view>每日签到领金币，累计7天有惊喜</view>
+      <view>已连续签到 {{info.continus_day}} 天</view>
+    </view>
+    <view style='display:flex;justify-content:space-between;align-items:center;'>
+      <view style='width:12%;padding-top:12%;position:relative;font-size:11px;border-radius:50%;' wx:for='{{info.goldcoin_check}}' wx:key='{{index}}' class='{{item==1?"signed":"unsigned"}}'>
+        <view style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;text-align:center;'>
+          <view wx:if='{{index=="monday"}}'>周一</view>
+          <view wx:if='{{index=="tuesday"}}'>周二</view>
+          <view wx:if='{{index=="wednesday"}}'>周三</view>
+          <view wx:if='{{index=="thursday"}}'>周四</view>
+          <view wx:if='{{index=="friday"}}'>周五</view>
+          <view wx:if='{{index=="saturday"}}'>周六</view>
+          <view wx:if='{{index=="sunday"}}'>周日</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style='display:flex;flex-direction:column;align-items:center;margin-top:30px;'>
+    <view wx:if='{{open_box}}' style='width:80%;height:60px;border-radius:30px;background:#f1f1f1;text-align:center;display:flex;align-items:center;flex-direction:column;justify-content:center;color:#404040;'>
+      <view>距离下次打开宝箱还需</view>
+      <view style='display:flex;justify-content:center;align-items:center;margin-top:5px;'>
+        <view style='font-size:20px;' class='icon iconfont icon-time_fill'></view>
+        <view style='margin-left:5px;'>{{h}}:{{m}}:{{s}}</view>
+      </view>
+    </view>
+    <view bindtap='openBox' wx:if='{{!open_box}}' style='width:80%;height:60px;border-radius:30px;background:#f42f19;text-align:center;display:flex;align-items:center;justify-content:center;color:#fff;'>
+      <view class='icon iconfont icon-tasklist_fill' style='font-size:24px;margin-right:5px;'></view>
+      <view style='font-size:16px;'>点击开启宝箱</view>
+    </view>
+    <view style='color:#aaa;font-size:13px;margin-top:10px;'>每四小时可开启一次，可得随机金币</view>
+  </view>
+
+  <view wx:if='{{false}}'>
+    <view style='border-top:5px solid #f1f1f1;border-bottom:1px solid #f1f1f1;padding:10px;box-sizing:border-box;margin-top:20px;display:flex;align-items:center;'>
+      <view class='icon iconfont icon-people' style='font-size:20px;width:24px;height:24px;color:#fff;background:red;border-radius:50%;text-align:center;line-height:24px;'></view>
+      <view style='color:red;font-size:16px;margin-left:5px;'>新手任务</view>
+    </view>
+    <view>
+      <view style='display:flex;justify-content:space-between;align-items:center;height:100%;'>
+        <view style='display:flex;justify-content:space-between;flex:7;border-bottom:1px solid #f1f1f1;padding:15px;box-sizing:border-box;'>
+          <view style='padding-left:20px;'>绑定手机号</view>
+          <view>+0.5</view>
+        </view>
+      </view>
+      <view style='display:flex;justify-content:space-between;align-items:center;height:100%;'>
+        <view style='display:flex;justify-content:space-between;flex:7;border-bottom:1px solid #f1f1f1;padding:15px;box-sizing:border-box;'>
+          <view style='padding-left:20px;'>首次购物额外奖励</view>
+          <view>+0.5</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if='{{true}}' style='margin-top:20px;'>
+    <view style='border-bottom:1px solid #f1f1f1;padding:10px;box-sizing:border-box;display:flex;align-items:center;'>
+      <view class='icon iconfont icon-task' style='font-size:20px;width:24px;height:24px;color:#fff;background:red;border-radius:50%;text-align:center;line-height:24px;'></view>
+      <view style='color:red;font-size:16px;margin-left:5px;'>任务列表</view>
+    </view>
+    <view>
+      <view style='display:flex;justify-content:space-between;align-items:center;height:100%;'>
+        <view style='display:flex;justify-content:space-between;flex:7;border-bottom:1px solid #f1f1f1;padding:15px;box-sizing:border-box;'>
+          <view style='padding-left:20px;'>新人专属红包</view>
+          <view>4000金币</view>
+        </view>
+      </view>
+      <view bindtap='scrollToTop' style='display:flex;justify-content:space-between;align-items:center;height:100%;'>
+        <view style='display:flex;justify-content:space-between;flex:7;border-bottom:1px solid #f1f1f1;padding:15px;box-sizing:border-box;'>
+          <view style='padding-left:20px;'>每日签到</view>
+          <view>200~1000金币</view>
+        </view>
+      </view>
+      <view style='display:flex;justify-content:space-between;align-items:center;height:100%;' bindtap='scrollToTop'>
+        <view style='display:flex;justify-content:space-between;flex:7;border-bottom:1px solid #f1f1f1;padding:15px;box-sizing:border-box;'>
+          <view style='padding-left:20px;'>每四小时签到</view>
+          <view>10~15金币</view>
+        </view>
+      </view>
+      <view style='display:flex;justify-content:space-between;align-items:center;height:100%;' bindtap='tap3min'>
+        <view style='display:flex;justify-content:space-between;flex:7;border-bottom:1px solid #f1f1f1;padding:15px;box-sizing:border-box;'>
+          <view style='padding-left:20px;'>每天浏览三分钟(首页右上角领取)</view>
+          <view>300金币</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--金币兑换  -->
+  <view style='margin-top:20px;'>
+    <!-- <view style='width:100%;height:5px;background:#f1f1f1;'></view> -->
+    <view style='font-size:16px;font-weight:bold;text-align:center;color:#f42f19;padding:15px 0px;'>金币兑换</view>
+    <view style='display:flex;flex-wrap:wrap;justify-content:space-around;;width:100%;'>
+      <view bindtap='exchange' data-item='{{item}}' wx:for='{{exchangeList}}' wx:key='{{index}}' style='width:45%;margin-bottom:10px;'>
+        <view style='background:#fff5db;border-radius:4px;padding:8px;box-sizing:border-box;text-align:center;'>
+          <image mode='widthFix' src='{{item.img}}' style='width:50%;vertical-align:bottom;'></image>
+        </view>
+        <view style='padding:4px;box-sizing:border-box;'>
+          <view style='font-weight:bold;'>{{item.title}}</view>
+          <view style='display:flex;align-items:center;margin-top:4px;'>
+            <view style='color:#ff8000;font-size:12px;'>{{item.count}}金币</view>
+            <view style='color:#ff8000;' class='icon iconfont icon-financial_fill'></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>

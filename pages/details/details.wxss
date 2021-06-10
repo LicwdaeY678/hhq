@@ -1,0 +1,121 @@
+/* pages/details/details.wxss */
+@import '../../font/iconfont.wxss';
+
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.coupon {
+  width: 94%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-image: url('http://wxb.whwangdoudou.cn/mp/static/img/quan_bg.8e6c491.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 36px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  background-color: transparent;
+}
+
+.coupon-1 {
+  flex: 3;
+  justify-content: center;
+  display: flex;
+}
+
+.coupon-2 {
+  flex: 2;
+  justify-content: center;
+  display: flex;
+}
+
+.contact {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 10px;
+  bottom: 20%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  padding: 0;
+  margin: 0;
+  background: #f1f1f1;
+  border: 1rpx solid #f1f1f1;
+  line-height: 30px;
+  z-index: 99;
+}
+
+.contact text {
+  font-size: 24px;
+}
+
+.collect_box {
+  position: fixed;
+  width: 100%;
+  right: calc(-100% + 42px);
+  top: 40%;
+  transition: all 0.5s;
+}
+
+.collect_content {
+  width: calc(100% - 42px);
+}
+
+@keyframes mock {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.mockBox {
+  animation: mock 10s infinite;
+}

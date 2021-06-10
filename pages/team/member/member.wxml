@@ -1,0 +1,46 @@
+<!--pages/team/member/member.wxml-->
+<!-- add by yanyingjie 2018-03-27 begin -->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view style='padding:20rpx 40rpx;'>
+    <view style='border:2rpx solid #000;border-radius:16rpx;display:flex; align-items:center;height:60rpx;'>
+      <input bindinput='saveword' bindconfirm='search' style='width:80%;padding-left:20rpx;font-size:28rpx;color:#565656;' placeholder="请输入昵称或者手机号" />
+      <view style='width:1rpx;height:40rpx;border-left:1rpx solid #e8e8e8;margin-left:20rpx;'></view>
+      <image bindtap='search' style='width:45rpx;margin-left:20rpx;' src='../../../image/home_search_gray.png' mode='widthFix'></image>
+    </view>
+  </view>
+
+  <view style='width:100%;height:10rpx;background-color:#e8e8e8;'></view>
+
+  <view wx:for='{{member}}'>
+    <view style='padding:20rpx;display:flex;font-size:14px;color:#aaa;align-items:center;justify-content:space-between;'>
+      <view style='display:flex;'>
+        <image mode='widthFix' wx:if='{{item.picurl}}' style='width:120rpx;border-radius:50%;' src='{{item.picurl}}'></image>
+        <image mode='widthFix' wx:if='{{!item.picurl}}' style='width:120rpx;border-radius:50%;' src='../../../image/userpic.png'></image>
+        <view style='display:flex;flex-direction:column;'>
+          <text style='display:inline-block;padding:15rpx;'>{{item.username}}</text>
+          <text style='display:inline-block;padding:15rpx;'>{{item.regdate}}</text>
+        </view>
+      </view>
+      <view style='display:flex;'>
+        <view style='width:2rpx;height:100rpx;background-color:#e8e8e8;margin:0 10rpx;'></view>
+        <view style='display:flex;flex-direction:column;align-items:center;'>
+          <text style='display:inline-block;padding:15rpx;'>推荐人数</text>
+          <text style='display:inline-block;padding:15rpx;'>{{item.d_count}}人</text>
+        </view>
+      </view>
+    </view>
+    <view style='width:100%;height:1rpx;background-color:#e8e8e8;'></view>
+  </view>
+
+
+ <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
+    bindtap='openShare'>
+    <image mode='widthFix' src='../../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;margin:0;padding:0;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../../image/contact.png'></image>
+  </button>
+</form>
+<!-- add by yanyingjie 2018-03-27 end -->

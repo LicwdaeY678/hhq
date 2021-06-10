@@ -1,0 +1,56 @@
+<!--pages/invite/invite.wxml-->
+<!-- add by yanyingjie 2018-03-26 begin -->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view>
+    <image style='width:100%;position:absolute;top:0;z-index:-10;' mode='widthFix' src='../../image/h4_invite_bg.png'></image>
+  </view>
+
+  <view style='padding:240rpx 20rpx 40rpx;'>
+    <view style='border:2rpx solid #000;padding:10rpx;font-size:28rpx;line-height:1.6'>
+      <text style='display:block;text-align:center;padding:10rpx;font-size:32rpx;'>邀请规则</text>
+      <text>· 专属海报中的邀请链接已经包含您的邀请信息
+    · 好友点击您的邀请链接，然后扫描识别海报中的小程序二维码，Ta关注成功并注册会员后，Ta将永远成为您的下级会员，未来Ta产生的奖励收入均计入您的账户中 
+    </text>
+    </view>
+  </view>
+
+  <!-- <view bindtap='goToPoster' style='text-decoration:underline;color:blue;text-align:center;'>分享帮助</view> -->
+
+  <view style='padding:40rpx 0 10rpx;text-align:center;'>
+    <image style='width:60%;margin-top:60px;margin-bottom:50px' mode='widthFix' src='{{picurl}}'></image>
+    <!-- <swiper display-multiple-items='2'>
+    <block wx:for="{{imgUrls}}">
+      <swiper-item style=''>
+        <image src="{{item}}" mode='aspectFit' class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper> -->
+    <!-- <scroll-view scroll-x='true' style='width: 100%;white-space: nowrap;'>
+    <view wx:for='{{imgUrls}}' style='display:inline-block;'>
+     <image src="{{item}}" mode="widthFix" class="slide-image" />
+    </view>
+  </scroll-view> -->
+  </view>
+
+  <view style='display:flex;padding:10px 0;background:#fff;justify-content:space-around;position:fixed;bottom:0;left:0;right:0;font-size:14px;'>
+    <button bindtap='saveImg' plain='true' style='border:none;width:48%;height:80rpx;line-height:80rpx;border-radius:100rpx;background:#51c332;color:#fff;text-align:center;'>
+      保存海报到本地
+    </button>
+    <button open-type='share' plain='true' style='border:none;width:48%;height:80rpx;line-height:80rpx;border-radius:100rpx;background:#f42f19;color:#fff;text-align:center;'>
+      分享链接
+    </button>
+  </view>
+
+  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
+    bindtap='openShare'>
+    <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
+  </button>
+</form>
+
+
+<!-- add by yanyingjie 2018-03-26 end -->

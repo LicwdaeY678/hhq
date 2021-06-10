@@ -1,0 +1,37 @@
+<!--pages/contact/contact.wxml-->
+<!-- add by yanyingjie 2018-03-27 begin -->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view style='margin-top:100rpx;'>
+    <image src='../../image/code.jpg' mode='widthFix' style='position:relative;left:50%;transform:translateX(-50%);width:360rpx;'></image>
+  </view>
+
+  <view style='text-align:center;'>
+    <view style='font-size:30rpx;color:#323232;margin:30rpx auto;'>快佣联盟微信公众号</view>
+    <view bindtap='saveCode' style='font-size:30rpx;color:#fff;background-color:#f42f19;width:300px;height:72rpx;border-radius:36rpx;margin:0 auto;line-height:72rpx;'>保存二维码到手机</view>
+    <!-- <view style='width:300px;margin:40rpx auto;display:flex;'>
+    <view style='border:2rpx solid #ff8702;font-size:30rpx;color:#fff;background-color:#ff8702;flex:4;border-radius:36rpx 0 0 36rpx;height:72rpx;line-height:72rpx;'>专属客服微信13302264127</view>
+    <view style='border:2rpx solid #ff8702;font-size:30rpx;color:#ff8702;background-color:#fff;flex:1;border-radius:0 36rpx 36rpx 0;height:72rpx;line-height:72rpx;'>复制</view>
+  </view> -->
+    <text style='font-size:26rpx;color:#323232;line-height:3;'>服务时间：周一至周六 09:00-18：00</text>
+  </view>
+
+
+
+
+  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
+    bindtap='openShare'>
+    <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
+  </button>
+</form>
+
+
+
+
+
+
+<!-- add by yanyingjie 2018-03-27 end -->

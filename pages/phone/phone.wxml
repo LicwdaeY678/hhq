@@ -1,0 +1,26 @@
+<!--pages/phone/phone.wxml-->
+<!-- add by yanyingjie 2018-03-30 start -->
+<form bindsubmit="formSubmit">
+  <view style='display:flex;flex-direction:column;padding:30rpx;font-size:28rpx;'>
+    <view style='display:flex;justify-content:center;font-size:36rpx;'>
+      <text>手机号验证</text>
+    </view>
+    <view style='display:flex;margin-top:40rpx;'>
+      <input name='phone' bindblur='save_phone' placeholder='请输入手机号' style='border:1px solid #f42f19;height:60rpx;flex:1;padding:6rpx 20rpx;'></input>
+    </view>
+    <view style='display:flex;margin-top:40rpx;align-items:center;'>
+      <input name='code' placeholder='请输入验证码' style='border:1px solid #f42f19;border-right:none;height:60rpx;padding:6rpx 20rpx;flex:5;'></input>
+      <view style='display:flex;color:#fff;flex:2;height:60rpx;padding:6rpx 20rpx;align-items:center;justify-content:center;' class='{{code_is_send==false?"normal":"gary"}}' bindtap='send_code'>{{code_txt}}</view>
+    </view>
+    <view style='display:flex;margin-top:40rpx;'>
+      <button formType="submit" style='flex:1;background-color:#f42f19;color:#fff;'>登录</button>
+    </view>
+  </view>
+</form>
+
+
+
+
+
+
+<!-- add by yanyingjie 2018-03-30 end -->

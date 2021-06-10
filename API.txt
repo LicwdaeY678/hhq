@@ -1,0 +1,104 @@
+1 首页接口说明：
+POST请求
+http://wxb.whwangdoudou.cn/extra.php
+综合: 什么参数都不传递，就是默认的所有的商品列表
+分页显示: 参数名page，不传递这个参数就是默认第一页， page=1是第一页，page=2是第二页，
+排序: 参数名order, 参数值yongjin(按佣金排序)，sum(按销量排序)，price(按价格排序)
+升序降序: 参数名sort, 参数值desc(降序), asc(升序)
+参数名fid 
+fid=1 	女装 
+fid=10 	男装
+
+fid=8	母婴
+fid=7	美食
+
+fid=4	美妆
+fid=3	数码
+
+fid=6	家居
+fid=2	鞋包
+
+fid=11	内衣
+fid=9	其他
+
+搜索：参数名search 参数值不能为空
+
+
+返回值说明json数据
+{"r": -1, "msg": '错误消息'}
+
+{
+"r": 0,
+  "result": [
+]
+ }
+
+
+2 详情页借口说明
+POST请求
+http://wxb.whwangdoudou.cn/extra.php
+参数列表 m=detail, itemid=564742843354
+
+返回值：
+{
+  "r": 0,
+  "result": {
+    "itemid": "556272780422",
+    "picurls": [
+      "http://img.alicdn.com/imgextra/i1/882275102/TB2eAhsd4SYBuNjSspjXXX73VXa_!!882275102.jpg",
+      "http://img.alicdn.com/imgextra/i1/882275102/TB2eAhsd4SYBuNjSspjXXX73VXa_!!882275102.jpg"
+    ],
+    "title": "2018春装新款网纱打底衫女长袖低领蕾丝镂空性感修身内搭小衫上衣",
+    "original_price": 88,
+    "coupon_price": "20",
+    "price": 68,
+    "sum": "26",
+    "yongjin": 19.04,
+    "content": "2018春装新款网纱打底衫女长袖低领蕾丝镂空性感修身内搭小衫上衣, 大厂做工，柔软不抽丝，轻盈飘逸，经典百搭，质量评分好，仙气十足！\\n原价88元\\n券后价68元\\n复制这条信息 ￥bpf10qpXcKW￥ 打开【手机淘宝】即可查看"
+  }
+}
+
+3 小程序授权
+m=login
+1. 先检查本地storage, key='kuaiyong', 如果有（说明之前已经小程序授权过）就发送POST, 把kuaiyong的值发送过来
+kuaiyong='fjeMgp8LeurTrswjP'
+如果返回r=-1, errcode=-10000, errmsg=登录过期了,需要重新授权, 那么就重新小程序授权（一次全新的登陆）
+如果返回r=0, uid=1234, phone_ok=0或者1（0表示没有绑定手机跳转到绑定手机界面，1表示绑定了手机直接跳转个人中心界面）, 'errmsg' => '登录成功,欢迎您回来';
+
+m=login
+2. 如果没有kuaiyong这个storage, 那么就是一次全新的登陆
+code
+encryptedData
+iv
+返回r=0, uid=1234, kuaiyong='fjeMgp8LeurTrswjP' phone_ok=0或者1（0表示没有绑定手机跳转到绑定手机界面，1表示绑定了手机直接跳转个人中心界面）, 'errmsg' => '登录成功,欢迎您回来'
+将返回的kuaiyong保存到storage
+uid也保存到storage留作备用
+
+4 手机验证
+m=send_code
+phone
+发送验证码
+返回r=0, 'errmsg' => '验证码发送成功，请注意查收'
+
+m=check_code
+uid
+phone
+code
+验证并绑定手机号
+返回r=0, 'errmsg' => '手机号码验证成功'
+
+
+
+{
+        "pagePath": "pages/theme/theme",
+        "iconPath": "image/tab_brand_unselect.png",
+        "selectedIconPath": "image/tab_brand_select.png",
+        "text": "主题馆"
+      },
+
+       {
+        "pagePath": "pages/fuli/fuli",
+        "iconPath": "image/zhuan.png",
+        "selectedIconPath": "image/zhuan.png",
+        "text": "福利社"
+      },

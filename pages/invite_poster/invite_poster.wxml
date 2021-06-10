@@ -1,0 +1,4 @@
+<!--pages/invite_poster/invite_poster.wxml-->
+<view>
+  <image style='width:100%;' mode='widthFix' src='https://wxb.whwangdoudou.cn/mp/img/share_hb_help2.jpg'></image>
+</view>

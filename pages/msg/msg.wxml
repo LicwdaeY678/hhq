@@ -1,0 +1,168 @@
+<!--pages/msg/msg.wxml-->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view>
+    <!-- <view style="padding: 10px;">
+    <view style="display: flex; justify-content: space-between; align-items:flex-start;">
+      <image src="../../image/msg_type_shopping.png" style="width: 30px; height: 30px; margin-top: 10px; margin-right: 10px;"></image>
+      
+      <view style="width: {{windowWidth - 10 - 30 - 10 - 10}}px; display: flex; align-items:flex-start;">
+        <image src="../../image/news_arrow.png" style="width: 15px; height: 20px; margin-top: 12px; position: relative; left: 1px;"></image>
+        <view style="width: 100%; background-color: #ffffff; border-radius: 15px;">
+          <view style="padding: 10px; display: flex; justify-content: space-between; align-items:center;">
+            <text style="font-size: 32rpx;">订单提醒</text>
+            <text style="font-size: 28rpx; color: #aaaaaa;">2018.03.23 20:39</text>
+          </view>
+          
+          <view style="background-color: #f1f1f1; height: 1px;"></view>
+          
+          <view style="padding: 10px;">
+            <text style="font-size: 28rpx;">[2018-03-23 20:39:06]商品"MUNA木娜2017冬装中长款 超舒服 后开叉直筒弹力包臀裙纯色半身裙"订单成功，付款金额119.00元，预计佣金收入3.64元。</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+    <view style="padding: 10px;" wx:for="{{msgList}}" wx:key="{{index}}">
+
+      <view wx:if='{{item.kf==0}}' style="display: flex; justify-content: space-between; align-items:flex-start;">
+        <view>
+          <image wx:if='{{item.type=="msg_type_order"}}' src="../../image/msg_type_shopping.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_system"}}' src="../../image/msg_type_system.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_goods"}}' src="../../image/msg_type_recommend.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_team_order"}}' src="../../image/msg_type_recommend.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_team_member"}}' src="../../image/h3_news_team.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+        </view>
+        <view style="width: {{windowWidth - 10 - 30 - 10 - 10}}px; display: flex; align-items:flex-start;">
+          <image src="../../image/news_arrow.png" style="width: 15px; height: 20px; margin-top: 12px; position: relative; left: 1px;"></image>
+          <view style="width: 100%; background-color: #ffffff; border-radius: 15px;">
+            <view style="padding: 10px; display: flex; justify-content: space-between; align-items:center;">
+              <text style="font-size: 32rpx;">{{item.title}}：</text>
+              <text style="font-size: 28rpx; color: #aaaaaa;">{{item.time}}</text>
+            </view>
+            <view style="background-color: #f1f1f1; height: 1px;"></view>
+            <view style="padding: 10px;">
+              <image wx:if="{{item.pic}}" src="{{item.pic}}" mode="widthFix" style="width: 100%; border-radius: 5px;"></image>
+              <text style="font-size: 28rpx; display: flex; justify-content: center; line-height:1.5;">{{item.content}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+
+
+      <button wx:if='{{item.kf==1}}' hover-class='none' open-type='contact' style="background:transparent;display: flex; justify-content: space-between; align-items:flex-start;line-height:1.5;">
+        <view>
+          <image wx:if='{{item.type=="msg_type_order"}}' src="../../image/msg_type_shopping.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_system"}}' src="../../image/msg_type_system.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_goods"}}' src="../../image/msg_type_recommend.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_team_order"}}' src="../../image/msg_type_recommend.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+          <image wx:if='{{item.type=="msg_type_team_member"}}' src="../../image/h3_news_team.png" style="width: 40px; height: 40px; margin-top: 10px; margin-right: 10px;"></image>
+        </view>
+        <view style="width: {{windowWidth - 10 - 30 - 10 - 10}}px; display: flex; align-items:flex-start;">
+          <image src="../../image/news_arrow.png" style="width: 15px; height: 20px; margin-top: 12px; position: relative; left: 1px;"></image>
+          <view style="width: 100%; background-color: #ffffff; border-radius: 15px;">
+            <view style="padding: 10px; display: flex; justify-content: space-between; align-items:center;">
+              <text style="font-size: 32rpx;">{{item.title}}：</text>
+              <text style="font-size: 28rpx; color: #aaaaaa;">{{item.time}}</text>
+            </view>
+            <view style="background-color: #f1f1f1; height: 1px;"></view>
+            <view style="padding: 10px;">
+              <image wx:if="{{item.pic}}" src="{{item.pic}}" mode="widthFix" style="width: 100%; border-radius: 5px;"></image>
+              <text style="font-size: 28rpx; display: flex; justify-content: center;">{{item.content}}</text>
+            </view>
+          </view>
+        </view>
+      </button>
+
+
+    </view>
+
+    <!-- <view style="padding: 10px;">
+    <view style="display: flex; justify-content: space-between; align-items:flex-start;">
+      <image src="../../image/msg_type_shopping.png" style="width: 30px; height: 30px; margin-top: 10px; margin-right: 10px;"></image>
+      
+      <view style="width: {{windowWidth - 10 - 30 - 10 - 10}}px; display: flex; align-items:flex-start;">
+        <image src="../../image/news_arrow.png" style="width: 15px; height: 20px; margin-top: 12px; position: relative; left: 1px;"></image>
+        <view style="width: 100%; background-color: #ffffff; border-radius: 15px;">
+          <view style="padding: 10px; display: flex; justify-content: space-between; align-items:center;">
+            <text style="font-size: 32rpx;">订单提醒</text>
+            <text style="font-size: 28rpx; color: #aaaaaa;">2018.03.23 19:27</text>
+          </view>
+          
+          <view style="background-color: #f1f1f1; height: 1px;"></view>
+          
+          <view style="padding: 10px;">
+            <text style="font-size: 28rpx;">[2018-03-23 19:27:56]商品"2018早春新品中长款过膝欧美风优雅气质格纹收腰长袖大摆连衣裙女"订单成功，付款金额265.00元，预计佣金收入6.69元。</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="padding: 10px;">
+    <view style="display: flex; justify-content: space-between; align-items:flex-start;">
+      <image src="../../image/msg_type_shopping.png" style="width: 30px; height: 30px; margin-top: 10px; margin-right: 10px;"></image>
+      
+      <view style="width: {{windowWidth - 10 - 30 - 10 - 10}}px; display: flex; align-items:flex-start;">
+        <image src="../../image/news_arrow.png" style="width: 15px; height: 20px; margin-top: 12px; position: relative; left: 1px;"></image>
+        <view style="width: 100%; background-color: #ffffff; border-radius: 15px;">
+          <view style="padding: 10px; display: flex; justify-content: space-between; align-items:center;">
+            <text style="font-size: 32rpx;">订单提醒</text>
+            <text style="font-size: 28rpx; color: #aaaaaa;">2018.03.23 19:02</text>
+          </view>
+          
+          <view style="background-color: #f1f1f1; height: 1px;"></view>
+          
+          <view style="padding: 10px;">
+            <text style="font-size: 28rpx;">[2018-03-23 19:02:37]商品"素白已然 2018春款衬衣女装打底长袖心机衬衫纯棉百搭设计感上衣"订单成功，付款金额159元，预计佣金收入4.06元。</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="padding: 10px;">
+    <view style="display: flex; justify-content: space-between; align-items:flex-start;">
+      <image src="../../image/msg_type_system.png" style="width: 30px; height: 30px; margin-top: 10px; margin-right: 10px;"></image>
+      
+      <view style="width: {{windowWidth - 10 - 30 - 10 - 10}}px; display: flex; align-items:flex-start;">
+        <image src="../../image/news_arrow.png" style="width: 15px; height: 20px; margin-top: 12px; position: relative; left: 1px;"></image>
+        <view style="width: 100%; background-color: #ffffff; border-radius: 15px;">
+          <view style="padding: 10px; display: flex; justify-content: space-between; align-items:center;">
+            <text style="font-size: 32rpx;">系统消息</text>
+            <text style="font-size: 28rpx; color: #aaaaaa;">2018.03.23 18:14</text>
+          </view>
+          
+          <view style="background-color: #f1f1f1; height: 1px;"></view>
+          
+          <view style="padding: 10px;">
+            <text style="font-size: 28rpx;">亲，欢迎使用fangfeiplay，全新小程序上线，有BUG是在所难免的，随时欢迎提出宝贵意见或建议，我们将根据您的需求，不断完善。</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+    <!-- <view wx:if="{{!msgList}}" style="display: flex; justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px; font-size: 28rpx;">
+    <view style="background-color: #9a9a9a; height: 1px; width: 75px;"></view>
+    <text style="color: #9a9a9a; padding-left: 10px; padding-right: 10px;">我是有底线的</text>
+    <view style="background-color: #9a9a9a; height: 1px; width: 75px;"></view>
+  </view> -->
+
+    <image wx:if="{{msgList==''}}" src='../../image/zanwu.png' mode='widthFix' style='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:140px;'></image>
+  </view>
+
+
+  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
+    bindtap='openShare'>
+    <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
+    <!-- <button style='width:100%;height:100%;border:none;border-color:transparent;position:absolute;left:0px;top:0px;background:transparent;' size='mini' open-type='contact'></button> -->
+  </button>
+</form>

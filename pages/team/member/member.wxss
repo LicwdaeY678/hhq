@@ -1,0 +1,25 @@
+/* pages/team/member/member.wxss */
+@import '../../../font/iconfont.wxss';
+
+
+.contact{
+  width: 50px;
+  height:50px;
+  position: fixed;
+  right: 10px;
+  bottom: 20%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:25px;
+  padding:0;
+  margin:0;
+  background: #f1f1f1;
+  border: 1rpx solid #f1f1f1;
+  line-height: 30px;
+  z-index: 99;
+}
+.contact text{
+  font-size: 24px;
+}

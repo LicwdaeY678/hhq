@@ -1,0 +1,26 @@
+<!--pages/join/join.wxml-->
+<view style='font-size:14px;width:100%;padding:20px;background:#f84c4c;box-sizing:border-box;'>
+  <view style='width:100%;background:#fff;padding:20px;box-sizing:border-box;'>
+    <view style='font-size:15px;font-weight:bold;'>加入店主团队轻松赚钱，自由生活</view>
+    <view style='margin-top:10px;font-size:12px;'>
+      <view style='padding:8px 0;'>1、自行推广订单获得100%推广佣金 </view>
+      <view style='padding:8px 0;'>2、享受VIP专属优惠 </view>
+      <!-- <view style='padding:8px 0;'>3、店主直招获得平台邀请奖励30元/个</view> -->
+    </view>
+  </view>
+</view>
+
+<view style='padding:20px;box-sizing:border-box;font-size:14px;'>
+  <view>
+    <view style='font-size:15px;border-left:2px solid #000;padding-left:10px;font-weight:bold;'>升级费用</view>
+    <view style='margin-top:15px;'>现在加入只要99元，限时优惠！</view>
+  </view>
+
+  <view>
+    <view style='margin-top:20px;font-size:15px;border-left:2px solid #000;padding-left:10px;font-weight:bold;'>支付方式</view>
+    <view bindtap='wxpay' style='display:flex;align-items:center;margin-top:15px;border:1px solid #000;border-radius:6px;padding:8px 15px;box-sizing:border-box;width:40%;justify-content:center;'>
+      <image style='width:20px;' mode='widthFix' src='../../image/wxpay.png'></image>
+      <view style='margin-left:10px;'> 微信</view>
+    </view>
+  </view>
+</view>

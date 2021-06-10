@@ -1,0 +1,153 @@
+<!--pages/detail/detail.wxml-->
+<!-- <view class="common">
+  <view style='width:{{windowWidth}}'>
+    <image src='{{details.picurl}}' style='width:100%;' mode='widthFix'></image>
+  </view>
+    
+
+  <view style="padding: 10px; padding-bottom: 5px;">
+    <view class="goods_item_text_single_line">
+      <image src="../../image/icon_pin.png" mode="aspectFit" style="width: 40rpx; height: 40rpx; padding-right: 10px; vertical-align: text-bottom;"></image>
+      <text>{{details.title}}</text>
+    </view>
+    <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 10px; margin-bottom: 10px;">
+      <view>
+        <text style="color: #f42f19; font-size: 34rpx;">￥{{details.price}}</text>
+        <text style="text-decoration: line-through; color: #999999; font-size: 24rpx;">￥{{details.original_price}}</text>
+      </view>
+      <text style="color: #999999; font-size: 24rpx;">已拼{{details.sum}}单</text>
+    </view>
+    <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+      <text style="display: flex; justify-content: center; align-items: center;  width: 100px; height: 35px; background-image: url('{{coupon_image}}'); background-size:cover; background-repeat:no-repeat; font-size: 28rpx; color: #ffffff;">券 ￥{{details.coupon_price}}</text>
+      <text style="color: #f42f19;">预计赚{{details.yongjin}}元</text>
+    </view>
+  </view>
+
+  <view style="background-color: #f1f1f1; height: 1px;"></view>
+
+
+  <view>
+    <view style='padding:20rpx;'>
+      <text>商品详情:\n</text>
+      <text>{{txt}}</text>
+    </view>
+    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;'>
+      <image wx:for='{{details.images}}' wx:key='index' src='{{item}}' mode='widthFix' bindtap='onTapScale' data-img='{{item}}' style='width:100%;'></image>
+    </view>
+
+  </view>
+
+
+
+  <view>
+    <view style="display: flex; justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px;" class="title">
+      <view style="background-color: #d8d8d8; height: 1px; width: 75px;"></view>
+      <text style="color: #d8d8d8; padding-left: 10px; padding-right: 10px;">我是有底线的</text>
+      <view style="background-color: #d8d8d8; height: 1px; width: 75px;"></view>
+    </view>
+
+
+    <view style='width:100%;height:80rpx;'>
+      <view style='position:fixed;bottom:0;left:0;z-index:100;'>
+        <view style='display:flex;width:{{windowWidth}}px;'>
+          <button open-type="contact" plain='true' size='mini' style='flex:1;display:flex;justify-content: center;align-items: center;height:80rpx;background-color:#fff;box-sizing:border-box;border-color:#d8d8d8;border-radius:none;border-top:1rpx solid #d8d8d8;line-height:1;'
+            hover-class='none'>
+            <text class="iconfont icon-customerservice" style='color:#f42f19;font-size:45rpx;margin-right:10rpx;'></text>
+            <text>客服</text>
+          </button>
+          <button plain='true' size='mini' style='flex:1;display:flex;justify-content: center;align-items: center;height:80rpx;background-color:#fff;box-sizing:border-box;border-color:#d8d8d8;border-radius:none;border-top:1rpx solid #d8d8d8;line-height:1;' hover-class='none'
+            bindtap='shareToWx' open-type="share">
+            <text class="iconfont icon-share" style='color:#f42f19;font-size:45rpx;margin-right:10rpx;'></text>
+            <text>分享</text>
+          </button>
+          <view style='flex:3;display:flex;justify-content: center;color:#fff;background-color:#f42f19;align-items: center;height:80rpx;border-top-left-radius:10rpx;' bindtap='onTapBuy'>
+            <text>领券购买</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> -->
+
+
+
+<view class="common">
+  <view>
+    <scroll-view scroll-x="true" style="white-space: nowrap;">
+      <block wx:for="{{images}}" wx:key="{{index}}" wx:for-index="gindex" wx:for-item="gitem">
+        <view wx:if="{{0 == gindex}}" style="display: inline-block; width: 150px; position: relative;">
+          <image mode='aspectFill' catchtap='onTapScale' data-item="{{gitem}}" class="gimage" src="{{gitem.image}}" style="width: 135px; height: 135px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; margin-right: 5px;"></image>
+          <!-- <image catchtap="onTapSelect" data-item="{{gitem}}" wx:if="{{gitem.selected}}" src="../../image/post_right_select.png" style="width: 22px; height: 22px; position: absolute; top: 15px; right: 15px;"></image>
+          <image catchtap="onTapCancelSelect" data-item="{{gitem}}" wx:if="{{!gitem.selected}}" src="../../image/post_right_unselect.png" style="width: 22px; height: 22px; position: absolute; top: 15px; right: 15px;"></image> -->
+        </view>
+        <view wx:elif="{{(images.length - 1) == gindex}}" style="display: inline-block; width: 150px; position: relative;">
+          <image mode='aspectFill' catchtap='onTapScale' data-item="{{gitem}}" class="gimage" src="{{gitem.image}}" style="width: 135px; height: 135px; margin-left: 5px; margin-top: 10px; margin-bottom: 10px; margin-right: 10px;"></image>
+          <!-- <image catchtap="onTapSelect" data-item="{{gitem}}" wx:if="{{gitem.selected}}" src="../../image/post_right_select.png" style="width: 22px; height: 22px; position: absolute; top: 15px; right: 15px;"></image>
+          <image catchtap="onTapCancelSelect" data-item="{{gitem}}" wx:if="{{!gitem.selected}}" src="../../image/post_right_unselect.png" style="width: 22px; height: 22px; position: absolute; top: 15px; right: 15px;"></image> -->
+        </view>
+        <view wx:else style="display: inline-block; width: 150px; position: relative;">
+          <image mode='aspectFill' catchtap='onTapScale' data-item="{{gitem}}" class="gimage" src="{{gitem.image}}" style="width: 135px; height: 135px; margin-left: 5px; margin-top: 10px; margin-bottom: 10px; margin-right: 5px;"></image>
+          <!-- <image catchtap="onTapSelect" data-item="{{gitem}}" wx:if="{{gitem.selected}}" src="../../image/post_right_select.png" style="width: 22px; height: 22px; position: absolute; top: 15px; right: 15px;"></image>
+          <image catchtap="onTapCancelSelect" data-item="{{gitem}}" wx:if="{{!gitem.selected}}" src="../../image/post_right_unselect.png" style="width: 22px; height: 22px; position: absolute; top: 15px; right: 15px;"></image> -->
+        </view>
+      </block>
+    </scroll-view>
+
+    <!-- <view style="display: flex; justify-content:flex-end; margin-right: 10px; margin-bottom: 10px;">已选中{{num}}张</view> -->
+  </view>
+
+  <view style="background-color: #f1f1f1; height: 3px;"></view>
+
+  <view style="padding: 10px; padding-bottom: 5px;">
+    <view class="goods_item_text_single_line">
+      <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;text-align:center;vertical-align:middle;line-height:16px;margin-right:5px;'>拼多多</view>{{details.title}}
+    </view>
+    <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 10px; margin-bottom: 10px;">
+      <view>
+        <text style="color: #f42f19; font-size: 34rpx;">￥{{details.price}}</text>
+        <text style="text-decoration: line-through; color: #999999; font-size: 24rpx;">￥{{details.original_price}}</text>
+      </view>
+      <text style="color: #999999; font-size: 24rpx;">已拼{{details.sum}}单</text>
+    </view>
+    <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+      <text style="display: flex; justify-content: center; align-items: center;  width: 100px; height: 35px; background-image: url('{{coupon_image}}'); background-size:cover; background-repeat:no-repeat; font-size: 28rpx; color: #ffffff;">券 ￥{{details.coupon_price}}</text>
+      <text style="color: #f42f19;">预计赚{{details.yongjin}}元</text>
+    </view>
+  </view>
+
+  <!-- <view style="background-color: #f1f1f1; height: 1px;"></view> -->
+
+  <view style="padding: 10px; padding-bottom: 20px;">
+    <view style="border: solid 1px #f42f19; padding: 10px; border-radius: 15px;">
+      <textarea selectable='true' style="height: {{text_area_height}}px;width:100%; font-size: 32rpx;" value="{{txt}}" ></textarea>
+    </view>
+  </view>
+  <!-- <view style="background-color: #f1f1f1; height: 1px;"></view> -->
+
+  <view>
+    <view style="display: flex; justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px;" class="title">
+      <view style="background-color: #f42f19; height: 1px; width: 75px;"></view>
+      <text style="color: #f42f19; padding-left: 10px; padding-right: 10px;">分享</text>
+      <view style="background-color: #f42f19; height: 1px; width: 75px;"></view>
+    </view>
+ 
+    <view style="display: flex; justify-content: space-between; align-items: center;font-size:36rpx;padding:20rpx;">
+      <view style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-left: 30px;" bindtap='copyTxt'>
+        <image src="../../image/share_details_copy.png" style="width: 60px; height: 60px;"></image>
+        <text style="padding-top: 8px;font-size:30rpx;">复制文案</text>
+      </view>
+
+      <button hover-class='none' plain='true' style="display: flex; flex-direction: column; justify-content: center; align-items: center;border:none;line-height:1" bindtap='shareToWx' open-type="share">
+        <image src="../../image/share_weixn.png" style="width: 60px; height: 60px;"></image>
+        <text style="padding-top: 8px;font-size:30rpx;">微信</text>
+      </button>
+
+      <view style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-right: 30px;" bindtap='shareToFriends'>
+        <image src="../../image/share_circle.png" style="width: 60px; height: 60px;"></image>
+        <text style="padding-top: 8px;font-size:30rpx;">朋友圈</text>
+      </view>
+    </view>
+
+    <!-- <view bindtap='goToPoster' style='text-decoration:underline;color:blue;text-align:center;padding:10px 0px;'>分享帮助</view> -->
+  </view>
+</view>

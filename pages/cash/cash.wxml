@@ -1,0 +1,53 @@
+<!--pages/cash/cash.wxml-->
+<!-- add by yanyingjie 2018-03-27 begin -->
+  <view style='display:flex;background-color:#51a3ff;color:#fff;flex-direction:column;padding:40rpx;font-size:36rpx;position:relative;'>
+    <text style='opacity:0.6;'>可提现</text>
+    <navigator url="/pages/cashlist/cashlist" hover-class="none">
+      <text style='position:absolute;right:15px;top:15px;font-size:30px;opacity:0.6;' class='icon iconfont icon-transaction_fill'></text>
+    </navigator>
+    <view style='display:flex;flex-direction:column;justify-content:center;'>
+      <text style='display:block;text-align:center;font-size:60rpx;margin-top:30rpx;'>￥ {{cash.promotion_can_cash}}</text>
+      <view style='display:flex;justify-content:space-around;margin-top:40rpx;align-items:center;'>
+        <view style='display:flex;flex-direction:column;justify-content:center;'>
+          <text style=''>￥ {{cash.promotion_settled}}</text>
+          <text style='opacity:0.6;'>已结算</text>
+        </view>
+        <view style='width:2rpx;height:60rpx;background-color:#fff;'></view>
+        <view style='display:flex;flex-direction:column;justify-content:center;'>
+          <text>￥ {{cash.promotion_to_be_settled}}</text>
+          <text style='opacity:0.6;'>待结算</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+ 
+
+  <view style='width:100%;height:10rpx;background-color:#e8e8e8;'></view>
+
+
+  <view style='padding:30rpx;font-size:30rpx;'>
+    <form bindsubmit="formSubmit">
+      <label style='border-bottom:2rpx solid #e8e8e8;display:flex;padding:16rpx;align-items:center;color:#323232;'>
+        支付宝
+        <input name='alipay' style='padding:0 60rpx;' placeholder='请输入支付宝账号' value='{{cash.alipay}}'></input>
+      </label>
+      <label style='border-bottom:2rpx solid #e8e8e8;display:flex;padding:16rpx;align-items:center;color:#323232;'>
+        姓名
+        <input name='alipay_name' style='padding:0 60rpx;' placeholder='请输入姓名' value='{{cash.alipay_name}}'></input>
+      </label>
+      <label style='border-bottom:2rpx solid #e8e8e8;display:flex;padding:16rpx;align-items:center;color:#323232;'>
+        提现金额 ￥
+        <input name='promotion_can_cash' disabled style='padding:0 60rpx;' value='{{cash.promotion_can_cash}}'></input>
+      </label>
+      <view style='padding:30rpx;margin-top:50rpx;'>
+        <button form-type='submit' style='padding:10px 0;width:100%;background-color:#f42f19;color:#fff;border-radius:15rpx;text-align:center;'>提现</button>
+      </view>
+    </form>
+  </view>
+
+
+
+
+
+<!-- add by yanyingjie 2018-03-27 end -->

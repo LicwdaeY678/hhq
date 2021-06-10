@@ -1,0 +1,133 @@
+<!--pages/personal/personal.wxml-->
+<form bindsubmit='submitFormId' report-submit='true'>
+  <view class="common">
+    <view>
+      <view style="z-index: -99999; position: absolute; top: 0px; left: 0;">
+        <image src="../../image/personal_top.png" mode="widthFix" style="width: {{windowWidth}}px;"></image>
+      </view>
+
+      <view style="position: relative; top: 30px; left: 0; display: flex; flex-direction: row; align-items:center; justify-content:space-between;">
+
+        <!-- 会员等级 -->
+        <view wx:if="{{userinfo.vip==0}}" style="margin-left: 15px;">
+          <text style='color:#fff;display:block;margin:5px;width:100px;text-align:center;text-overflow:ellipsis;white-space:nowrap;word-break:keep-all;;overflow:hidden'>{{userinfo.username}}</text>
+          <image src="../../image/normal_member.png" style="width: 25px; height: 25px; vertical-align: middle;"></image>
+          <text style="padding-left: 5px; color: #ffd737;">普通会员</text>
+
+        </view>
+
+        <view wx:if="{{userinfo.vip==1}}" style="margin-left: 15px;">
+          <text style='color:#fff;display:block;margin:5px;'>{{userinfo.username}}</text>
+          <image src="../../image/vip_member.png" style="width: 25px; height: 25px; vertical-align: middle;"></image>
+          <text style="padding-left: 5px; color: #ffd737;">VIP会员</text>
+        </view>
+
+        <image src="{{userinfo.picurl}}" style="width: 60px; height: 60px; border-radius: 60px; border: solid 2px #fafafa; margin-right: 50px;"></image>
+
+      </view>
+
+
+      <!-- <view style='position:relative;width:45%;height:30px;line-height:30px;text-align:center;top:45px;left:10px;border-radius: 20px; background-color: #f42f19; color: #ffffff; font-size:30rpx;'>
+        <navigator hover-class='none' url='/pages/vip_poster/vip_poster'>升级VIP，收入涨</navigator>
+      </view> -->
+
+      <view style="position: relative; top: 60px; left: 0; display: flex; flex-direction: row; align-items:center; justify-content:space-between;">
+        <view style="color: #f42f19;">
+          <text style="font-size: 58rpx; margin-left: 15px; margin-right: 3px;">{{userinfo.yongjin}}</text>
+          <text>元</text>
+        </view>
+        <navigator url="/pages/cash/cash" style=";" hover-class="none">
+          <button form-type='submit' style="border-radius: 20px; background-color: #f42f19; color: #ffffff; padding-left: 22px; padding-right: 22px; padding-top: 8px; padding-bottom: 8px; margin-right: 15px;font-size:30rpx;">提现</button>
+        </navigator>
+      </view>
+    </view>
+
+    <view style="background-color: #f1f1f1; height: 5px; position: relative; top: 70px;"></view>
+
+    <view style="position: relative; top: 80px; margin-top: 5px; margin-bottom: 5px; display: flex; align-items:center; justify-content:space-between;">
+      <navigator url="/pages/order/order" style="width: {{windowWidth/2 - 1}}px;" hover-class="none">
+        <button form-type='submit' style="display: flex; align-items:center; justify-content:center; width: 100%;font-size:28rpx;background:transparent;">
+          <image src="../../image/mine_order.png" mode="aspectFit" style="width: 30px; height: 30px; margin-right: 5px;"></image>
+          <text>我的订单</text>
+        </button>
+      </navigator>
+      <view style="background-color: #f1f1f1; width: 2px; height: 40px;"></view>
+      <navigator url="/pages/team/team" style="width: {{windowWidth/2 - 1}}px;" hover-class="none">
+        <button form-type='submit' style="display: flex; align-items:center; justify-content:center; width: 100%;font-size:28rpx;background:transparent;">
+          <image src="../../image/mine_fans.png" mode="aspectFit" style="width: 30px; height: 30px; margin-right: 5px;"></image>
+          <text>我的团队</text>
+        </button>
+      </navigator>
+    </view>
+
+    <!-- <view wx:if="{{isLogin}}" style="background-color: #f1f1f1; height: 1px; position: relative;"></view> -->
+
+
+    <view style="background-color: #f1f1f1; height: 1px; position: relative; top: 90px;"></view> 
+     <navigator url="/pages/sign/sign" hover-class="none">
+      <button form-type='submit' style="background:transparent;position: relative; top: 85px; margin-left: 15px; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; display: flex; align-items:center; justify-content:space-between;padding:8px 0px;">
+        <view style="font-size:30rpx;display:flex;align-items:center;padding:10rpx;">
+          <text class='icon iconfont icon-brush_fill' style='font-size:20px;color:#f42f19;margin-right: 5px;'></text>
+          <text>签到活动 </text>
+        </view>
+        <image src="../../image/right_arrow.png" style="width: 12px; height: 21px;"></image>
+      </button>
+    </navigator> 
+
+
+     <view style="background-color: #f1f1f1; height: 1px; position: relative; top: 80px;"></view> 
+     <navigator url="/pages/invite/invite" hover-class="none">
+      <button form-type='submit' style="background:transparent;position: relative; top: 85px; margin-left: 15px; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; display: flex; align-items:center; justify-content:space-between;">
+        <view style="font-size:30rpx;display:flex;align-items:center;padding:10rpx;">
+          <image src="../../image/mine_invite.png" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;"></image>
+          <text>邀请链接 </text>
+        </view>
+        <image src="../../image/right_arrow.png" style="width: 12px; height: 21px;"></image>
+      </button>
+    </navigator> 
+
+
+    <view style="background-color: #f1f1f1; height: 1px; position: relative; top: 85px;"></view>
+
+    <navigator url="/pages/contact/contact" hover-class="none">
+      <button form-type='submit' style="background:transparent;position: relative; top: 90px; margin-left: 15px; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; display: flex; align-items:center; justify-content:space-between;">
+        <view style="font-size:30rpx;display:flex;align-items:center;padding:10rpx;">
+          <image src="../../image/mine_us.png" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;"></image>
+          <text>联系我们</text>
+        </view>
+        <image src="../../image/right_arrow.png" style="width: 12px; height: 21px;"></image>
+      </button>
+    </navigator>
+
+    <view style="background-color: #f1f1f1; height: 1px; position: relative; top: 95px;"></view>
+
+    <navigator url="/pages/setting/setting" hover-class="none">
+      <button form-type='submit' style="background:transparent;position: relative; top: 100px; margin-left: 15px; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; display: flex; align-items:center; justify-content:space-between;">
+        <view style="font-size:30rpx;display:flex;align-items:center;padding:10rpx;">
+          <image src="../../image/mine_set.png" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;"></image>
+          <text>设置</text>
+        </view>
+        <image src="../../image/right_arrow.png" style="width: 12px; height: 21px;"></image>
+      </button>
+    </navigator>
+
+    <view style="background-color: #f1f1f1; height: 1px; position: relative; top: 105px;"></view>
+  </view>
+
+
+
+
+
+
+  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
+    bindtap='openShare'>
+    <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
+  </button>
+
+  <!--进入客服  -->
+  <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;margin:0;padding:0;' open-type='contact' form-type='submit'>
+    <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
+  </button>
+</form>
+
+<!-- <button bindtap='buy'>购买</button> -->

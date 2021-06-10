@@ -1,0 +1,22 @@
+<!--pages/pdd/pdd.wxml-->
+<web-view src="{{url}}"></web-view>
+<view style='position:fixed;bottom:0;left:0;right:0;background:#fff;height:55px;box-sizing:border-box;display:flex;border-top:1rpx solid #f1f1f1;font-size:13px;'>
+  <navigator open-type='switchTab' url="/pages/index/index" hover-class="none" style='flex:1;align-items:center;display:flex;'>
+    <view style='flex:1;justify-content:center;flex-direction: column;align-items:center;display:flex;'>
+      <image style='width:20px;' mode='widthFix' src='../../image/tab_home_select.png'></image>
+      <text>首页</text>
+    </view>
+  </navigator>
+  <navigator open-type='switchTab' url="/pages/msg/msg" hover-class="none" style='flex:1;align-items:center;display:flex;'>
+    <view style='flex:1;justify-content:center;flex-direction: column;align-items:center;display:flex;'>
+      <image style='width:20px;' mode='widthFix' src='../../image/tab_msg_select.png'></image>
+      <text>消息</text>
+    </view>
+  </navigator>
+  <navigator open-type='switchTab' url="/pages/personal/personal" hover-class="none" style='flex:1;align-items:center;display:flex;'>
+    <view style='flex:1;justify-content:center;flex-direction: column;align-items:center;display:flex;'>
+      <image style='width:20px;' mode='widthFix' src='../../image/tab_mine_select.png'></image>
+      <text>我的</text>
+    </view>
+  </navigator>
+</view>

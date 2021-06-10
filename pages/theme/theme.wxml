@@ -1,0 +1,17 @@
+<!--pages/theme/theme.wxml--> 
+<view style='padding:10px;box-sizing:border-box;'>
+  <view bindtap='goToList' data-theme_id='{{item.theme_id}}' wx:for='{{themeList}}' wx:key='{{index}}' style='border:1rpx solid #f1f1f1;margin-bottom:30px;'>
+    <view style='width:100%;'>
+      <image mode='widthFix' src='{{item.image_url}}' style='width:100%;'></image>
+    </view>
+    <view style='display:flex;justify-content:space-between;font-size:14px;margin-top:10px;padding:0px 10px;box-sizing:border-box;align-items:center;'>
+      <view style=''>{{item.name}}</view>
+      <view style='color:#999;'>商品 {{item.goods_num}} 个</view>
+    </view>
+    <view style='display:flex;justify-content:space-between;padding:10px;box-sizing:border-box;'>
+      <view style='width:18%;' wx:for='{{item.goods_thumbnail_urls}}' wx:for-item='_item' wx:key='{{index}}'>
+        <image mode='widthFix' src='{{_item}}' style='width:100%;'></image>
+      </view>
+    </view>
+  </view>
+</view>

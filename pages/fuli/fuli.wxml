@@ -1,0 +1,6 @@
+<!--pages/fuli/fuli.wxml-->
+<view style='position:relative;'>
+  <view bindtap='back' class='icon iconfont icon-return' style='position:fixed;top:10px;left:10px;background:rgba(255,255,255,0.5);border-radius:50%;color:#fff;padding:15px;'></view>
+  <image style='width:100%;vertical-align:bottom;' mode='widthFix' src='//wxb.whwangdoudou.cn/mp/img/vip_poster.jpg'></image>
+  <navigator style='position:absolute;bottom:36px;left:0;right:0;height:70px;' hover-class='none' url='/pages/join/join'></navigator>
+</view>

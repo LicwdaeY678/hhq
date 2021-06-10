@@ -1,0 +1,15 @@
+/* pages/themelist/themelist.wxss */
+image{
+  vertical-align: bottom;
+}
+.goods_item_text {
+  font-size: 34rpx;
+  display: -webkit-box;
+  line-height: 42rpx;
+  align-items: center;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

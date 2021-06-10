@@ -1,0 +1,137 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.9",
+	"appid": "wxfd3ae61ec2c31206",
+	"projectname": "%E6%83%A0%E8%8A%B1%E5%88%B8",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "wxfd3ae61ec2c31206",
+					"pathName": "wxfd3ae61ec2c31206",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "personal",
+					"pathName": "pages/personal/personal",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "perfect",
+					"pathName": "pages/perfect/perfect",
+					"query": "itemid=1404717231"
+				},
+				{
+					"id": -1,
+					"name": "msg",
+					"pathName": "pages/msg/msg",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "welcome",
+					"pathName": "pages/welcome/welcome",
+					"query": "t=1&ch=cy"
+				},
+				{
+					"id": 5,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "scene=2788"
+				},
+				{
+					"id": 6,
+					"name": "details带t",
+					"pathName": "pages/details/details",
+					"query": "itemid=1869557022&t=200"
+				},
+				{
+					"id": 7,
+					"name": "details不带t",
+					"pathName": "pages/details/details",
+					"query": "scene=2:1535940381"
+				},
+				{
+					"id": -1,
+					"name": "sign",
+					"pathName": "pages/sign/sign",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "theme",
+					"pathName": "pages/theme/theme",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "theme_detail",
+					"pathName": "pages/themedetail/themedetail",
+					"query": "theme_id=43"
+				},
+				{
+					"id": -1,
+					"name": "invite",
+					"pathName": "pages/invite/invite",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "share",
+					"pathName": "pages/share/share",
+					"query": "itemid=1477833054"
+				},
+				{
+					"id": -1,
+					"name": "404",
+					"pathName": "pages/sign2/sign",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "index带scene",
+					"pathName": "pages/index/index",
+					"query": "scene=2:1"
+				},
+				{
+					"id": -1,
+					"name": "cash",
+					"pathName": "pages/cash/cash",
+					"query": ""
+				}
+			]
+		}
+	}
+}

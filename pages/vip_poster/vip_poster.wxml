@@ -1,0 +1,5 @@
+<!--pages/vip_poster/vip_poster.wxml-->
+<view style='position:relative;'>
+  <image style='width:100%;vertical-align:bottom;' mode='widthFix' src='//wxb.whwangdoudou.cn/mp/img/vip_poster.jpg'></image>
+  <navigator style='position:absolute;bottom:36px;left:0;right:0;height:70px;' hover-class='none' url='/pages/join/join'></navigator>
+</view>

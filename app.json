@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/kefu/kefu",
+    "pages/personal/personal",
+    "pages/share/share",
+    "pages/order/order",
+    "pages/team/team",
+    "pages/cash/cash",
+    "pages/cashlist/cashlist",
+    "pages/invite/invite",
+    "pages/contact/contact",
+    "pages/setting/setting",
+    "pages/team/member/member",
+    "pages/team/order/order",
+    "pages/team/income/income",
+    "pages/msg/msg",
+    "pages/phone/phone",
+    "pages/details/details",
+    "pages/pdd/pdd",
+    "pages/help/help",
+    "pages/perfect/perfect",
+    "pages/hot/hot",
+    "wxfd3ae61ec2c31206",
+    "pages/sign/sign",
+    "pages/theme/theme",
+    "pages/themedetail/themedetail",
+    "pages/invite_poster/invite_poster",
+    "pages/goods_poster/goods_poster",
+    "pages/vip_poster/vip_poster",
+    "pages/join/join",
+    "pages/fuli/fuli"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "fangfeiplay",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#ED373D",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/tab_home_unselect.png",
+        "selectedIconPath": "image/tab_home_select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "iconPath": "image/tab_msg_unselect.png",
+        "selectedIconPath": "image/tab_msg_select.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "image/tab_mine_unselect.png",
+        "selectedIconPath": "image/tab_mine_select.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

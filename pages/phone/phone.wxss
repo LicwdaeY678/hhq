@@ -1,0 +1,9 @@
+/* pages/phone/phone.wxss */
+.normal{
+  background-color: #f42f19;
+  border:1px solid #f42f19;
+}
+.gary{
+background-color: #ccc;
+border:1px solid #ccc;
+}

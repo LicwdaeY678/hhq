@@ -1,0 +1,21 @@
+<!--pages/login/login.wxml-->
+<!-- add by yanyingjie 2018-03-30 begin -->
+
+<!-- <view class='container' style='background-image: url("../../image/login_bg.jpg");justify-content:flex-end;'>
+
+  <view style='width:80%;height:80rpx;color:#fff;line-height:80rpx;border:1px solid #fff;margin-top:-50rpx;align-items:center;justify-content:center;display:flex;' bindtap='wxLogin'>
+    <image src='../../image/h1_login_wechat.png' style='width:50rpx;margin-right:20rpx;' mode='widthFix'></image>
+    <text>微信授权登录</text>
+  </view>
+  <view style='width:80%;height:80rpx;color:#fff;line-height:80rpx;text-align:center;margin-top:20rpx;' bindtap='phoLogin'>手机号登录</view>
+
+</view> -->
+
+<view style='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:14px;'>login...</view>
+
+
+
+
+
+
+<!-- add by yanyingjie 2018-03-30 end -->

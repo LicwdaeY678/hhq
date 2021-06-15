@@ -33,7 +33,8 @@ Page({
     itemid: 0,
     offset: 0,
     scroll_left: 0,
-    close_toast2: false
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
@@ -45,6 +46,13 @@ Page({
     that.data.itemid = itemid;
     console.log(itemid);
     that.fetchData();
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
   fetchData() {
     let that = this;
@@ -64,7 +72,7 @@ Page({
     let that = this;
     let item = e.currentTarget.dataset.item;
     that.data.page = 1;
-    that.data.keyword='';
+    that.data.keyword = '';
     console.log(item);
     if (item.index == '0') {
       that.data.type = '1';
@@ -117,7 +125,7 @@ Page({
     getInfo(p).then(res => {
       that.setData({
         goods: res.result,
-        fid:''
+        fid: ''
       })
     })
   },
@@ -167,7 +175,7 @@ Page({
     console.log('到底啦~~~');
     let that = this;
     let p = {};
-    if(that.data.keyword){
+    if (that.data.keyword) {
       if (that.data.type == '1') {
         p = {
           uid: wx.getStorageSync('uid'),
@@ -175,7 +183,7 @@ Page({
           page: ++that.data.page,
           itemid: that.data.itemid,
           search: that.data.keyword ? that.data.keyword : '',
-          i:'3'
+          i: '3'
         }
       }
       else if (that.data.type == '2') {
@@ -185,11 +193,11 @@ Page({
           page: ++that.data.page,
           fid: that.data.fid,
           search: that.data.keyword ? that.data.keyword : '',
-          i:'3'
+          i: '3'
         }
       }
     }
-    else{
+    else {
       if (that.data.type == '1') {
         p = {
           uid: wx.getStorageSync('uid'),
@@ -207,7 +215,7 @@ Page({
         }
       }
     }
-    
+
     getInfo(p).then(res => {
       that.setData({
         goods: [...that.data.goods, ...res.result]

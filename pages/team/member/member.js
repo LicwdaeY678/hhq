@@ -10,9 +10,10 @@ Page({
    */
   data: {
     member: null,
-    _member:null,
-    keyword:'',
-    close_toast2: false
+    _member: null,
+    keyword: '',
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
@@ -31,8 +32,8 @@ Page({
         type: ''
       }
     }
-    else if(type == 'vip') {
-      p={
+    else if (type == 'vip') {
+      p = {
         m: 'team',
         uid: wx.getStorageSync('uid'),
         a: 'member',
@@ -71,26 +72,33 @@ Page({
         type: 'direct_sub'
       }
     }
-    getInfo(p).then(res=>{
+    getInfo(p).then(res => {
       console.log(res);
       that.setData({
-        member:res.result,
+        member: res.result,
         _member: res.result
       })
     })
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
   // 搜索成员
-  search(){
-    let that=this;
-    if(that.data.keyword==''){
+  search() {
+    let that = this;
+    if (that.data.keyword == '') {
       that.setData({
-        member:that.data._member
+        member: that.data._member
       })
     }
-    else{
+    else {
       var temp;
-      temp=that.data._member.filter(item=>{
-        return item.username.toLowerCase().indexOf(that.data.keyword.toLowerCase())>=0
+      temp = that.data._member.filter(item => {
+        return item.username.toLowerCase().indexOf(that.data.keyword.toLowerCase()) >= 0
       });
       that.setData({
         member: temp
@@ -98,11 +106,11 @@ Page({
     }
   },
   // 保存关键词
-  saveword(e){
-    let that=this;
+  saveword(e) {
+    let that = this;
     that.data.keyword = e.detail.value;
     console.log(keyword);
-  }, 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

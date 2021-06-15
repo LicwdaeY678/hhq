@@ -10,7 +10,8 @@ Page({
   data: {
     windowWidth: 0,                              //当前屏幕宽度
     userinfo: null,
-    close_toast2: false
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
@@ -18,7 +19,13 @@ Page({
    */
   onLoad: function (options) {
 
-    
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
 
   },
 
@@ -126,7 +133,7 @@ Page({
         // var res = JSON.parse(res.data.trim());
         console.log(res);
         wx.requestPayment({
-          'timeStamp':res.data.pay_info.timeStamp,
+          'timeStamp': res.data.pay_info.timeStamp,
           'nonceStr': res.data.pay_info.nonceStr,
           'package': res.data.pay_info.package,
           'signType': 'MD5',

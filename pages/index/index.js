@@ -21,14 +21,14 @@ Page({
   },*/
   data: {
     background: [{
-        image: "../../image/slide1.png"
-      },
-      {
-        image: "../../image/slide2.png"
-      },
-      {
-        image: "../../image/slide3.png"
-      }
+      image: "../../image/slide1.png"
+    },
+    {
+      image: "../../image/slide2.png"
+    },
+    {
+      image: "../../image/slide3.png"
+    }
     ],
     indicatorDots: true,
     vertical: false,
@@ -40,25 +40,25 @@ Page({
 
     // tabs: ['综合', '佣金', '销量', '价格'],
     tabs: [{
-        name: '综合',
-        order: '',
-        status: 0
-      },
-      {
-        name: '佣金',
-        order: 'yongjin',
-        status: 0
-      },
-      {
-        name: '销量',
-        order: 'sum',
-        status: 0
-      },
-      {
-        name: '价格',
-        order: 'price',
-        status: 0
-      }
+      name: '综合',
+      order: '',
+      status: 0
+    },
+    {
+      name: '佣金',
+      order: 'yongjin',
+      status: 0
+    },
+    {
+      name: '销量',
+      order: 'sum',
+      status: 0
+    },
+    {
+      name: '价格',
+      order: 'price',
+      status: 0
+    }
     ],
     nowTab: '',
     sort: '',
@@ -72,35 +72,35 @@ Page({
 
     category: [
       [{
-          id: "18",
-          title: "电器",
-          image: "../../image/electric.png"
-        },
-        {
-          id: "4",
-          title: "母婴",
-          image: "../../image/baby.png"
-        },
-        {
-          id: "16",
-          title: "美妆",
-          image: "../../image/beauty.png"
-        },
-        {
-          id: "818",
-          title: "家纺",
-          image: "../../image/house.png"
-        },
-        {
-          id: "1451",
-          title: "运动",
-          image: "../../image/bras.png"
-        },
-        {
-          id: "743",
-          title: "男装",
-          image: "../../image/man.png"
-        }
+        id: "18",
+        title: "电器",
+        image: "../../image/electric.png"
+      },
+      {
+        id: "4",
+        title: "母婴",
+        image: "../../image/baby.png"
+      },
+      {
+        id: "16",
+        title: "美妆",
+        image: "../../image/beauty.png"
+      },
+      {
+        id: "818",
+        title: "家纺",
+        image: "../../image/house.png"
+      },
+      {
+        id: "1451",
+        title: "运动",
+        image: "../../image/bras.png"
+      },
+      {
+        id: "743",
+        title: "男装",
+        image: "../../image/man.png"
+      }
       ],
       [
 
@@ -158,17 +158,17 @@ Page({
 
     flag: false, //显示用户选择
     person: [{
-        name: '美女',
-        img: 'https://wxb.whwangdoudou.cn/mp/img/pic/mnc.png'
-      },
-      {
-        name: '帅哥',
-        img: 'https://wxb.whwangdoudou.cn/mp/img/pic/sgc.png'
-      },
-      {
-        name: '宝妈',
-        img: 'https://wxb.whwangdoudou.cn/mp/img/pic/nmc.png'
-      }
+      name: '美女',
+      img: 'https://wxb.whwangdoudou.cn/mp/img/pic/mnc.png'
+    },
+    {
+      name: '帅哥',
+      img: 'https://wxb.whwangdoudou.cn/mp/img/pic/sgc.png'
+    },
+    {
+      name: '宝妈',
+      img: 'https://wxb.whwangdoudou.cn/mp/img/pic/nmc.png'
+    }
     ],
     nowPerson: '美女',
     job: ['学生党', '初入职场', '资深工作党', '其他'],
@@ -179,21 +179,22 @@ Page({
     hb_flag: false, //显示新人红包
     m: '00',
     s: '00',
-    _timer: null, 
+    _timer: null,
     clock_flag1: false,
     clock_flag2: false,
-    qd_flag:false,
-    date:'',
+    qd_flag: false,
+    date: '',
+    check_we_app: ''
   },
   onShow(e) {
     console.log('onShow');
-    let that=this;
-    let date=new Date();
+    let that = this;
+    let date = new Date();
     that.setData({
-      date:date
+      date: date
     })
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     if (options.scene) {
       let scene = parseInt(decodeURIComponent(options.scene));
       console.log('scene:' + scene);
@@ -202,7 +203,6 @@ Page({
       }
     }
     app.checkLogin();
-
 
     // 1.获取设备信息
     if (options.scene) {
@@ -215,7 +215,7 @@ Page({
 
     // 2.获取用户信息
     // let userinfo = wx.getUserInfo();
-    let userinfo=wx.getStorageSync('userinfo');
+    let userinfo = wx.getStorageSync('userinfo');
     if (userinfo != undefined) {
       sdk.user.submitUserInfo(userinfo);
     }
@@ -228,11 +228,6 @@ Page({
       content: '180s'
     }
     sdk.user.submitEvent(data2);
-
-
-
-
-
     var that = this;
     if (!wx.getStorageSync('uid')) {
       wx.hideTabBar();
@@ -272,7 +267,7 @@ Page({
         stv: this.data.stv
       })
       this.tabsCount = tabs.length;
-    } catch (e) {}
+    } catch (e) { }
     this.setData({
       windowWidth: wx.getSystemInfoSync().windowWidth, //图片宽度
     });
@@ -316,6 +311,7 @@ Page({
           })
         }
       }
+
     });
 
     let date = new Date();
@@ -328,7 +324,7 @@ Page({
         clock_flag1: true
       })
       that.countDown(180);
-    } 
+    }
     else {
       that.setData({
         clock_flag1: false
@@ -346,7 +342,24 @@ Page({
         qd_flag: false
       })
     }
+    let params = {
+      m: 'check_we_app'
+    };
+    getInfo(params).then(res => {
+      console.log(res);
+      if (res.result == 1) {
+        this.setData({
+          check_we_app: true
+        })
 
+      } else {
+        this.setData({
+          check_we_app: false
+        })
+        wx.hideShareMenu();
+      }
+    })
+    console.log(app.globalData.check_we_app)
   },
   _updateSelectedPage(page) {
     let {
@@ -381,111 +394,6 @@ Page({
           item.status = 1;
           that.setData({
             tabs: [{
-                name: '综合',
-                order: '',
-                status: 0
-              },
-              {
-                name: '佣金',
-                order: 'yongjin',
-                status: 0
-              },
-              {
-                name: '销量',
-                order: 'sum',
-                status: 0
-              },
-              {
-                name: '价格',
-                order: 'price',
-                status: 1
-              }
-            ]
-          })
-          that.data.sort = 'desc';
-          p = {
-            m: 'index',
-            fid: that.data.fid ? that.data.fid : '',
-            search: that.data.keyword ? that.data.keyword : '',
-            order: item.order,
-            uid: wx.getStorageSync('uid'),
-            sort: 'desc',
-            i: '3'
-          }
-        } else if (item.status == 1) {
-          item.status = 2;
-          that.setData({
-            tabs: [{
-                name: '综合',
-                order: '',
-                status: 0
-              },
-              {
-                name: '佣金',
-                order: 'yongjin',
-                status: 0
-              },
-              {
-                name: '销量',
-                order: 'sum',
-                status: 0
-              },
-              {
-                name: '价格',
-                order: 'price',
-                status: 2
-              }
-            ]
-          })
-          that.data.sort = 'asc';
-          p = {
-            m: 'index',
-            fid: that.data.fid ? that.data.fid : '',
-            search: that.data.keyword ? that.data.keyword : '',
-            order: item.order,
-            uid: wx.getStorageSync('uid'),
-            sort: 'asc',
-            i: '3'
-          }
-        } else if (item.status == 2) {
-          item.status = 1;
-          that.data.sort = 'desc';
-          that.setData({
-            tabs: [{
-                name: '综合',
-                order: '',
-                status: 0
-              },
-              {
-                name: '佣金',
-                order: 'yongjin',
-                status: 0
-              },
-              {
-                name: '销量',
-                order: 'sum',
-                status: 0
-              },
-              {
-                name: '价格',
-                order: 'price',
-                status: 1
-              }
-            ]
-          })
-          p = {
-            m: 'index',
-            fid: that.data.fid ? that.data.fid : '',
-            search: that.data.keyword ? that.data.keyword : '',
-            order: item.order,
-            uid: wx.getStorageSync('uid'),
-            sort: 'desc',
-            i: '3'
-          }
-        }
-      } else {
-        that.setData({
-          tabs: [{
               name: '综合',
               order: '',
               status: 0
@@ -503,22 +411,94 @@ Page({
             {
               name: '价格',
               order: 'price',
-              status: 0
+              status: 1
             }
-          ]
-        });
-        p = {
-          m: 'index',
-          fid: that.data.fid ? that.data.fid : '',
-          search: that.data.keyword ? that.data.keyword : '',
-          order: item.order,
-          uid: wx.getStorageSync('uid'),
-          i: '3'
+            ]
+          })
+          that.data.sort = 'desc';
+          p = {
+            m: 'index',
+            fid: that.data.fid ? that.data.fid : '',
+            search: that.data.keyword ? that.data.keyword : '',
+            order: item.order,
+            uid: wx.getStorageSync('uid'),
+            sort: 'desc',
+            i: '3'
+          }
+        } else if (item.status == 1) {
+          item.status = 2;
+          that.setData({
+            tabs: [{
+              name: '综合',
+              order: '',
+              status: 0
+            },
+            {
+              name: '佣金',
+              order: 'yongjin',
+              status: 0
+            },
+            {
+              name: '销量',
+              order: 'sum',
+              status: 0
+            },
+            {
+              name: '价格',
+              order: 'price',
+              status: 2
+            }
+            ]
+          })
+          that.data.sort = 'asc';
+          p = {
+            m: 'index',
+            fid: that.data.fid ? that.data.fid : '',
+            search: that.data.keyword ? that.data.keyword : '',
+            order: item.order,
+            uid: wx.getStorageSync('uid'),
+            sort: 'asc',
+            i: '3'
+          }
+        } else if (item.status == 2) {
+          item.status = 1;
+          that.data.sort = 'desc';
+          that.setData({
+            tabs: [{
+              name: '综合',
+              order: '',
+              status: 0
+            },
+            {
+              name: '佣金',
+              order: 'yongjin',
+              status: 0
+            },
+            {
+              name: '销量',
+              order: 'sum',
+              status: 0
+            },
+            {
+              name: '价格',
+              order: 'price',
+              status: 1
+            }
+            ]
+          })
+          p = {
+            m: 'index',
+            fid: that.data.fid ? that.data.fid : '',
+            search: that.data.keyword ? that.data.keyword : '',
+            order: item.order,
+            uid: wx.getStorageSync('uid'),
+            sort: 'desc',
+            i: '3'
+          }
         }
-      }
-    } else {
-      that.setData({
-        tabs: [{
+      } else {
+        that.setData({
+          tabs: [{
             name: '综合',
             order: '',
             status: 0
@@ -538,6 +518,39 @@ Page({
             order: 'price',
             status: 0
           }
+          ]
+        });
+        p = {
+          m: 'index',
+          fid: that.data.fid ? that.data.fid : '',
+          search: that.data.keyword ? that.data.keyword : '',
+          order: item.order,
+          uid: wx.getStorageSync('uid'),
+          i: '3'
+        }
+      }
+    } else {
+      that.setData({
+        tabs: [{
+          name: '综合',
+          order: '',
+          status: 0
+        },
+        {
+          name: '佣金',
+          order: 'yongjin',
+          status: 0
+        },
+        {
+          name: '销量',
+          order: 'sum',
+          status: 0
+        },
+        {
+          name: '价格',
+          order: 'price',
+          status: 0
+        }
         ]
       });
       that.data.sort = 'desc';
@@ -568,7 +581,7 @@ Page({
 
   },
 
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -580,7 +593,7 @@ Page({
   /**
    * item点击事件
    */
-  onIpItemClick: function(event) {
+  onIpItemClick: function (event) {
     console.log(event);
     var id = event.currentTarget.dataset.item.id;
     var curIndex = 0;
@@ -624,25 +637,25 @@ Page({
   chooseCategory(e) {
     this.setData({
       tabs: [{
-          name: '综合',
-          order: '',
-          status: 0
-        },
-        {
-          name: '佣金',
-          order: 'yongjin',
-          status: 0
-        },
-        {
-          name: '销量',
-          order: 'sum',
-          status: 0
-        },
-        {
-          name: '价格',
-          order: 'price',
-          status: 0
-        }
+        name: '综合',
+        order: '',
+        status: 0
+      },
+      {
+        name: '佣金',
+        order: 'yongjin',
+        status: 0
+      },
+      {
+        name: '销量',
+        order: 'sum',
+        status: 0
+      },
+      {
+        name: '价格',
+        order: 'price',
+        status: 0
+      }
       ]
     });
     this._updateSelectedPage(0);
@@ -701,7 +714,7 @@ Page({
       })
     })
   },
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
@@ -709,10 +722,10 @@ Page({
     return {
       title: '惠花券',
       path: 'pages/index/index',
-      success: function(res) {
+      success: function (res) {
         // 转发成功
       },
-      fail: function(res) {
+      fail: function (res) {
         // 转发失败
       }
     }
@@ -745,7 +758,7 @@ Page({
       uid: wx.getStorageSync('uid'),
       formId: formId
     };
-    post(p).then(res => {})
+    post(p).then(res => { })
   },
   choosePerson(e) {
     let that = this;
@@ -815,25 +828,25 @@ Page({
         _fid: 0,
         nowTab: '',
         tabs: [{
-            name: '综合',
-            order: '',
-            status: 0
-          },
-          {
-            name: '佣金',
-            order: 'yongjin',
-            status: 0
-          },
-          {
-            name: '销量',
-            order: 'sum',
-            status: 0
-          },
-          {
-            name: '价格',
-            order: 'price',
-            status: 0
-          }
+          name: '综合',
+          order: '',
+          status: 0
+        },
+        {
+          name: '佣金',
+          order: 'yongjin',
+          status: 0
+        },
+        {
+          name: '销量',
+          order: 'sum',
+          status: 0
+        },
+        {
+          name: '价格',
+          order: 'price',
+          status: 0
+        }
         ],
         activeTab: 0,
         'stv.offset': 0,
@@ -842,27 +855,27 @@ Page({
     })
   },
   //领取新人红包
-  getGift() {
-    let that = this;
-    let p = {
-      m: 'goldcoin',
-      a: 'new_super',
-      uid: wx.getStorageSync('uid')
-    };
-    getInfo(p).then(res => {
-      console.log(res);
-      if (res.r == 0) {
-        this.setData({
-          hb_flag: false
-        });
-        wx.showToast({
-          title: '新人红包领取成功！',
-          icon: 'none'
-        })
-      }
+  // getGift() {
+  //   let that = this;
+  //   let p = {
+  //     m: 'goldcoin',
+  //     a: 'new_super',
+  //     uid: wx.getStorageSync('uid')
+  //   };
+  //   getInfo(p).then(res => {
+  //     console.log(res);
+  //     if (res.r == 0) {
+  //       this.setData({
+  //         hb_flag: false
+  //       });
+  //       wx.showToast({
+  //         title: '新人红包领取成功！',
+  //         icon: 'none'
+  //       })
+  //     }
 
-    })
-  },
+  //   })
+  // },
   // 倒计时
   countDown(c) {
 
@@ -922,24 +935,24 @@ Page({
       }
     })
   },
-  goToSign(){
-    let that=this;
+  goToSign() {
+    let that = this;
     that.setData({
-      qd_flag:false
+      qd_flag: false
     });
     wx.navigateTo({
       url: '../sign/sign',
     });
     that.tap_qd_flag();
   },
-  close_qd(){
+  close_qd() {
     let that = this;
     that.setData({
       qd_flag: false
     });
     that.tap_qd_flag();
   },
-  tap_qd_flag(){
+  tap_qd_flag() {
     let date = new Date();
     let y = date.getFullYear();
     let m = date.getMonth() + 1;
@@ -947,7 +960,7 @@ Page({
     date = y + '' + m + '' + d;
     wx.setStorageSync('_date', date);
   },
-  bindGetUserInfo(e){
+  bindGetUserInfo(e) {
     console.log(e);
   }
 })

@@ -8,14 +8,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    close_toast2: false
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
 
   /**

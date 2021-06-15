@@ -1,4 +1,4 @@
-<!--pages/cashlist/cashlist.wxml-->
+<!-- pages/cashlist/cashlist.wxml -->
 <form bindsubmit='submitFormId' report-submit='true'>
   <view style='padding:10px;box-sizing:border-box;font-size:14px;'>
     <view style='display:flex;height:48px;border-bottom: 1px solid #f1f1f1;align-items:center;'>
@@ -12,13 +12,10 @@
       <text style='flex:1;display:flex;justify-content:center;'>{{item.status_desc}}</text>
     </view>
   </view>
-
-  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
-    bindtap='openShare'>
+  <button wx:if="{{check_we_app}}" plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;' bindtap='openShare'>
     <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
   </button>
-
-   <!--进入客服  -->
+  <!-- 进入客服 -->
   <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;margin:0;padding:0;' open-type='contact' form-type='submit'>
     <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
   </button>

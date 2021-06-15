@@ -1,19 +1,17 @@
-<!--pages/perfect/perfect.wxml-->
+<!-- pages/perfect/perfect.wxml -->
 <form bindsubmit='submitFormId' report-submit='true'>
   <view style='font-size:14px;width:100%;z-index:100;padding-top:72px;color:#fff;'>
     <view style='background:#f42f19;position:fixed;top:0;left:0;right:0;height:36px;text-align:center;line-height:36px;z-index:100;'>
       <view bindtap='goIndex' class='icon iconfont icon-return' style='position:absolute;top:50%;left:20px;font-size:20px;transform:translateY(-50%);'></view>
       <view style='font-size:16px;'>精选商品</view>
     </view>
-
     <scroll-view class='collect_content' scroll-x="true" style="width: 100%;white-space: nowrap;background:#fff;position:fixed;top:36px;left:0;right:0;color:#999;z-index:100;" scroll-with-animation='true'>
       <button form-type='submit' hover-class='none' wx:for='{{cate}}' bindtap='handle' data-item='{{item}}' style='display:inline-block;width:22%;text-align:center;height:36px;line-height:36px;font-size:15px;background:#fff;' class='{{fid==item.id?"active":""}}'>
         <view>{{item.title}}</view>
       </button>
       <view style='width:22%;height:1px;background:#f42f19;position:absolute;bottom:0px;left:{{offset}}%;transition:all 0.3s;'></view>
     </scroll-view>
-
-    <!--搜索框  -->
+    <!-- 搜索框 -->
     <view style="width: 100%; height: 28px; position: fixed; top: 85px; left: 0; right: 0; z-index: 999;">
       <view style="width: 100%; display: flex; justify-content: center; align-items:center;">
         <view style="display: flex; justify-content: center; align-items:center; height: 28px; width: 90%; background-color: rgba(255,255,255,0.6); border-radius: 20px;">
@@ -23,7 +21,6 @@
         </view>
       </view>
     </view>
-
     <view>
       <view style="display: flex;flex-wrap:wrap; ">
         <block wx:for="{{goods}}" wx:key="{{index}}">
@@ -35,18 +32,25 @@
                 </view>
                 <view style="width:100%;padding: 5px;box-sizing:border-box;display:flex;justify-content:space-between;flex-direction:column;">
                   <view class="goods_item_text" style=''>
-
                     <!-- <image src="../../image/icon_pin.png" mode="aspectFit" style="width: 40rpx; height: 40rpx; padding-right: 10px; vertical-align: text-bottom;"></image> -->
-                    <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;text-align:center;vertical-align:middle;line-height:19px;'>拼多多</view>
-                    <text style="color: #757575;font-size:24rpx;margin-left:4px;">{{item.title}}</text>
+                    <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;text-align:center;vertical-align:middle;line-height:19px;'>
+                      拼多多
+                    </view>
+                    <text style="color: #757575;font-size:24rpx;margin-left:4px;">
+                      {{item.title}}
+                    </text>
                   </view>
                   <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px 0;font-size: 24rpx; color: #999999;">
                     <text style="text-decoration: line-through;">原价：￥{{item.original_price}}</text>
                     <text style="padding-right: 5px;">已拼{{item.sum}}单</text>
                   </view>
                   <view style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-                    <text style="color: #f42f19; font-size: 26rpx;font-weight:bold;">￥{{item.price}}</text>
-                    <text style="display: flex; justify-content: center; align-items: center;  width: 80px; height: 30px; background-image: url('{{coupon_image}}'); background-size:cover; background-repeat:no-repeat; font-size: 24rpx; color: #ffffff;">券 ￥{{item.coupon_price}}</text>
+                    <text style="color: #f42f19; font-size: 26rpx;font-weight:bold;">
+                      ￥{{item.price}}
+                    </text>
+                    <text style="display: flex; justify-content: center; align-items: center;  width: 80px; height: 30px; background-image: url('{{coupon_image}}'); background-size:cover; background-repeat:no-repeat; font-size: 24rpx; color: #ffffff;">
+                      券 ￥{{item.coupon_price}}
+                    </text>
                   </view>
                 </view>
               </view>
@@ -56,12 +60,10 @@
       </view>
     </view>
   </view>
-  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
-    bindtap='openShare'>
+  <button wx:if="{{check_we_app}}" plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;' bindtap='openShare'>
     <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
   </button>
-
-  <!--进入客服  -->
+  <!-- 进入客服 -->
   <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;margin:0;padding:0;' open-type='contact' form-type='submit'>
     <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
   </button>

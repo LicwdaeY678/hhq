@@ -19,28 +19,36 @@ Page({
       '../../image/invite.jpg'
     ],
     close_toast2: false,
-    picurl:'',
+    picurl: '',
+    check_we_app: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that=this;
-    let p={
-      m:'xinvite',
-      uid:wx.getStorageSync('uid')
+    let that = this;
+    let p = {
+      m: 'xinvite',
+      uid: wx.getStorageSync('uid')
     };
-    getInfo(p).then(res=>{
-      let picurl=res.result;
+    getInfo(p).then(res => {
+      let picurl = res.result;
       // picurl=picurl.replace(/\r\n/g,'');
       that.setData({
-        picurl:picurl
+        picurl: picurl
       })
+    });
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
     })
+    console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
-  saveImg(){
-    let that=this;
+  saveImg() {
+    let that = this;
     console.log(2333);
     wx.downloadFile({
       url: that.data.picurl,
@@ -50,12 +58,12 @@ Page({
           filePath: res.tempFilePath,
           success: function (res) {
             console.log(res);
-            let p={
-              m:'xinvite',
-              uid:wx.getStorageSync('uid'),
-              a:'del'
+            let p = {
+              m: 'xinvite',
+              uid: wx.getStorageSync('uid'),
+              a: 'del'
             };
-            getInfo(p).then(res=>{
+            getInfo(p).then(res => {
               console.log(res)
             });
 
@@ -78,7 +86,7 @@ Page({
           }
         })
       },
-      fail(res){
+      fail(res) {
         console.log(res);
       }
     })
@@ -100,7 +108,7 @@ Page({
     return {
       title: '拼多多自购省钱，分享赚钱，加入惠花券准没错',
       path: 'pages/index/index?t=' + wx.getStorageSync('uid'),
-      imageUrl:'../../image/fenxiang.jpg',
+      imageUrl: '../../image/fenxiang.jpg',
       success: function (res) {
         // 转发成功
       },
@@ -132,7 +140,7 @@ Page({
       show_toast2: true
     })
   },
-  goToPoster(){
+  goToPoster() {
     wx.navigateTo({
       url: '../invite_poster/invite_poster',
     })

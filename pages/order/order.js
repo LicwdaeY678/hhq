@@ -2,7 +2,7 @@
 const app = getApp();
 var util = require('../../utils/util.js');
 var getInfo = util.getInfo;
-Page({ 
+Page({
 
   /**
    * 页面的初始数据
@@ -19,7 +19,8 @@ Page({
     windowWidth: 0,
     order: null,
     orderList: null,
-    close_toast2: false
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
@@ -55,6 +56,13 @@ Page({
         order: res.result
       });
     })
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
 
   _updateSelectedPage(page) {
@@ -65,12 +73,12 @@ Page({
     this.setData({ stv: this.data.stv })
   },
   handlerTabTap(e) {
-    let that=this;
+    let that = this;
     let order;
     this._updateSelectedPage(e.currentTarget.dataset.index);
     var index = e.currentTarget.dataset.index;
     console.log(index);
-    if(index==0){
+    if (index == 0) {
       order = that.data.orderList.result;
     }
     else if (index == 1) {
@@ -90,7 +98,7 @@ Page({
     }
     console.log(order);
     that.setData({
-      order:order
+      order: order
     })
   },
 

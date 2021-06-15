@@ -33,7 +33,8 @@ Page({
     m: '00',
     s: '00',
     timer: null,
-    userinfo:null,
+    userinfo: null,
+    check_we_app: ''
   },
 
   /**
@@ -53,7 +54,14 @@ Page({
     console.log(nowWeek);
     that.setData({
       userinfo: wx.getStorageSync('userinfo')
+    });
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
     })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
 
   /**
@@ -83,7 +91,7 @@ Page({
       });
       that.countDown(time);
     }
-    if (time< 0) {
+    if (time < 0) {
       // wx.setStorageSync('count_down', 0);
       that.setData({
         open_box: false
@@ -186,7 +194,7 @@ Page({
         });
         let open_box_start_time = new Date();
         let open_box_end_time = new Date();
-        open_box_end_time.setHours(open_box_end_time.getHours()+4);  //设置四个小时之后
+        open_box_end_time.setHours(open_box_end_time.getHours() + 4);  //设置四个小时之后
         wx.setStorageSync('open_box_end_time', open_box_end_time.getTime());  //将宝箱结束时间存入storage
         that.countDown(14400);
         that.update();
@@ -231,12 +239,12 @@ Page({
       // console.log(count+'s');
     }
   },
-  scrollToTop(){
+  scrollToTop() {
     wx.pageScrollTo({
       scrollTop: 0
     })
   },
-  tap3min(){
+  tap3min() {
     wx.switchTab({
       url: '../index/index',
     })

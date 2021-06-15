@@ -22,21 +22,22 @@ Page({
     close_toast2: false,
     parity_goods: null,
     people: [{
-        img: '../../image/userpic.png',
-        username: 'a1'
-      },
-      {
-        img: '../../image/userpic.png',
-        username: 'a2'
-      },
-      {
-        img: '../../image/userpic.png',
-        username: 'a3'
-      }
+      img: '../../image/userpic.png',
+      username: 'a1'
+    },
+    {
+      img: '../../image/userpic.png',
+      username: 'a2'
+    },
+    {
+      img: '../../image/userpic.png',
+      username: 'a3'
+    }
     ],
     nowIndex: 0,
-    path:'',
-    appid:''
+    path: '',
+    appid: '',
+    check_we_app: ''
   },
   jump_pdd() {
     let that = this;
@@ -134,7 +135,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var lastPath = getCurrentPages()[0].route;
     console.log(lastPath);
     var itemid;
@@ -143,8 +144,6 @@ Page({
     t = options.t;
     console.log('t:' + t);
     var that = this;
-
-
     if (options.scene) {
       let scene = decodeURIComponent(options.scene);
       scene = scene.split(':');
@@ -155,7 +154,6 @@ Page({
       }
     }
     app.checkLogin();
-
 
     let p = {};
     if (lastPath == 'pages/perfect/perfect') {
@@ -234,48 +232,53 @@ Page({
     //   nowIndex++;
     // }, 10000)
 
-
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
   returnback() {
@@ -294,7 +297,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
@@ -302,10 +305,10 @@ Page({
     return {
       title: this.data.details.title,
       path: 'pages/details/details?itemid=' + this.data.details.itemid + '&t=' + wx.getStorageSync('uid'),
-      success: function(res) {
+      success: function (res) {
         // 转发成功
       },
-      fail: function(res) {
+      fail: function (res) {
         // 转发失败
       }
     }
@@ -347,8 +350,8 @@ Page({
       url: '../share/share?itemid=' + itemid,
     })
   },
-  goToJoin(){
-    let that=this;
+  goToJoin() {
+    let that = this;
     wx.navigateTo({
       url: '../join/join',
     })

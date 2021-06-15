@@ -21,7 +21,8 @@ Page({
     windowWidth: 0,
     order: null,
     orderList: null,
-    close_toast2: false
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
@@ -101,7 +102,13 @@ Page({
 
 
 
-
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
 
 
   },

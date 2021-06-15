@@ -35,7 +35,8 @@ Page({
     coupon_image: coupon_image,
 
     show_toast: false,
-    close_toast2: false
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
@@ -114,6 +115,13 @@ Page({
     this.setData({
       windowWidth: wx.getSystemInfoSync().windowWidth,//图片宽度
     });
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    // console.log(app.globalData.check_we_app)
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
   _updateSelectedPage(page) {
     let { tabs, stv, activeTab } = this.data;

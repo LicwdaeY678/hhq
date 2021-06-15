@@ -1,4 +1,4 @@
-<!--pages/team/team.wxml-->
+<!-- pages/team/team.wxml -->
 <form bindsubmit='submitFormId' report-submit='true'>
   <view style="background-color: #ffffff; margin-top: 10px; margin-left: 10px; margin-right: 10px;">
     <view style="padding: 15px;">
@@ -51,10 +51,8 @@
       </navigator>
     </view>
   </view>
-
   <!-- add by yanyingjie 2018-03-26 begin -->
-
-  <!-- 团队订单  -->
+  <!-- 团队订单 -->
   <view style="background-color: #ffffff; margin-top: 10px; margin-left: 10px; margin-right: 10px;">
     <view style="padding: 15px;">
       <image src="../../image/mine_order.png" style="width: 23px; height: 23px; vertical-align: text-bottom; padding-right: 8px;"></image>
@@ -98,8 +96,7 @@
       </navigator>
     </view>
   </view>
-
-  <!-- 团队贡献收入  -->
+  <!-- 团队贡献收入 -->
   <view style="background-color: #ffffff; margin-top: 10px;margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
     <view style="padding: 15px;">
       <image src="../../image/mine_money.png" style="width: 23px; height: 23px; vertical-align: text-bottom; padding-right: 8px;"></image>
@@ -143,14 +140,10 @@
       </navigator>
     </view>
   </view>
-
-
-  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
-    bindtap='openShare'>
+  <button wx:if="{{check_we_app}}" plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;' bindtap='openShare'>
     <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
   </button>
-
-  <!--进入客服  -->
+  <!-- 进入客服 -->
   <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;margin:0;padding:0;' open-type='contact' form-type='submit'>
     <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
   </button>

@@ -1,4 +1,4 @@
-<!--pages/order/order.wxml-->
+<!-- pages/order/order.wxml -->
 <form bindsubmit='submitFormId' report-submit='true'>
   <view>
     <view class="stv-container">
@@ -9,22 +9,21 @@
         <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
       </view>
     </view>
-
     <block wx:for="{{order}}">
       <view style="background-color: #f1f1f1; height: 8px; position:relative; z-index: 99999;"></view>
       <view style="background-color: #ffffff;overflow:hidden;">
         <view style="display: flex; justify-content: space-between; padding-top: 10px; padding-left: 15px; padding-right: 15px; height: 50px;">
           <view>
             <image src="{{orderList.picurl}}" style="width: 40px; height: 40px; border-radius: 10px; vertical-align: text-bottom;"></image>
-            <text style="font-size: 28rpx; color: #aaaaaa; padding-left: 10px;">{{item.order_create_time}}</text>
+            <text style="font-size: 28rpx; color: #aaaaaa; padding-left: 10px;">
+              {{item.order_create_time}}
+            </text>
           </view>
           <image wx-if="{{item.order_status==0||item.order_status==1}}" src="../../image/order_pay.png" style="width: 60px; height: 60px; position: relative; top: -23px;"></image>
           <image wx-if="{{item.order_status==2}}" src="../../image/order_withdraw.png" style="width: 60px; height: 60px; position: relative; top: -23px;"></image>
           <image wx-if="{{item.order_status==-1}}" src="../../image/order_failure.png" style="width: 60px; height: 60px; position: relative; top: -23px;"></image>
         </view>
-
         <view style="background-color: #f1f1f1; height: 1px;"></view>
-
         <view style="padding-left: 15px; padding-right: 15px; padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: space-between;">
           <image src="{{item.goods_thumbnail_url}}" style="width: 100px; height: 100px; border-radius: 10px;"></image>
           <view style="font-size: 32rpx; width: {{windowWidth - 100 - 15 - 15 - 10}}px; padding-left: 10px; display: flex; flex-direction: column; justify-content: space-between;">
@@ -38,7 +37,9 @@
               </view>
               <view style="width: 2px; height: 40px; background-color: #f1f1f1;"></view>
               <view style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-right: 15px;">
-                <text style="font-size: 38rpx; color: #f42f19; padding-bottom: 5px;">￥{{item.yongjin}}</text>
+                <text style="font-size: 38rpx; color: #f42f19; padding-bottom: 5px;">
+                  ￥{{item.yongjin}}
+                </text>
                 <text style="color: #aaaaaa;">预估奖励</text>
               </view>
             </view>
@@ -46,7 +47,6 @@
         </view>
       </view>
     </block>
-
     <!-- <view style="background-color: #f1f1f1; height: 13px; position:relative; z-index: 99999;"></view>
   <view style="background-color: #ffffff;">
     <view style="display: flex; justify-content: space-between; padding-top: 10px; padding-left: 15px; padding-right: 15px; height: 50px;">
@@ -145,28 +145,21 @@
       </view>
     </view>
   </view> -->
-
     <!-- <view style="display: flex; justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px; font-size: 28rpx;">
       <view style="background-color: #9a9a9a; height: 1px; width: 75px;"></view>
       <text style="color: #9a9a9a; padding-left: 10px; padding-right: 10px;">我是有底线的</text>
       <view style="background-color: #9a9a9a; height: 1px; width: 75px;"></view>
     </view> -->
-
     <view style="display: none;">
       <view style="display: flex; justify-content: center; margin-top: 50px;">
         <image src="../../image/nodata.png" mode="widthFix" style="width: 100px; opacity: 0.8;"></image>
       </view>
     </view>
   </view>
-
-
-
- <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
-    bindtap='openShare'>
+  <button wx:if="{{check_we_app}}" plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;' bindtap='openShare'>
     <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
   </button>
-
-  <!--进入客服  -->
+  <!-- 进入客服 -->
   <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;' open-type='contact' form-type='submit'>
     <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
   </button>

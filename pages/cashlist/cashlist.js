@@ -8,75 +8,82 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cashlist:null,
-    close_toast2: false
+    cashlist: null,
+    close_toast2: false,
+    check_we_app: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that=this;
-    let p={
-      m:'tixian',
-      uid:wx.getStorageSync('uid'),
-      a:'list'
+    let that = this;
+    let p = {
+      m: 'tixian',
+      uid: wx.getStorageSync('uid'),
+      a: 'list'
     };
-    getInfo(p).then(res=>{
+    getInfo(p).then(res => {
       console.log(res);
       that.setData({
-        cashlist:res.result
+        cashlist: res.result
       })
     })
+    this.setData({
+      check_we_app: app.globalData.check_we_app,
+    })
+    if (app.globalData.check_we_app == false) {
+      wx.hideShareMenu()
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
   submitFormId(e) {
     console.log(e);

@@ -1,4 +1,4 @@
-<!--pages/details/details.wxml-->
+<!-- pages/details/details.wxml -->
 <form bindsubmit='submitFormId' report-submit='true'>
   <view>
     <view bindtap='returnback' style='position:fixed;top:10px;left:10px;width:50px;height:50px;background:rgba(0,0,0,0.5);border-radius:50%;text-align:center;line-height:50px;z-index:100;'>
@@ -7,7 +7,9 @@
     <image mode='widthFix' style='width:100%;' src='{{details.picurl}}'></image>
     <view class='title' style='padding:0 10px;'>
       <!-- <image mode='widthFix' src='../../image/h1_con_icon.png' style='width:32px;'></image> -->
-      <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;text-align:center;vertical-align:middle;line-height:16px;'>拼多多</view>
+      <view style='display:inline-block;font-size:16rpx;height:16px;border-radius:8px;width:40px;background:#f42f19;color:#fff;text-align:center;vertical-align:middle;line-height:16px;'>
+        拼多多
+      </view>
       <text style='font-size:14px;line-height:1;margin-left:5px;'>{{details.title}}</text>
     </view>
     <view style='display:flex;justify-content:space-between;align-items:center;padding:5px 10px;'>
@@ -18,29 +20,22 @@
       </view>
       <text style='font-size:13px;color:#aaa;'>已拼{{details.sum}}单</text>
     </view>
-
     <view style='width:100%;height:4px;background:#f1f1f1;margin:15px 0;'></view>
-
     <navigator open-type='navigate' target='miniProgram' version='develop' app-id='wx859d5916eb5bf9ad' path='pages/jump_button/jump_button?path={{path}}&appid={{appid}}' hover-class='none'>
       <button form-type='submit' hover-class='none' class='coupon'>
         <text class='coupon-1'>{{details.coupon_price}}元优惠券</text>
         <text class='coupon-2'>立即领券</text>
       </button>
     </navigator>
-
     <!-- <web-view src="{{details.url}}"></web-view> -->
-
     <view style='width:100%;height:4px;background:#f1f1f1;margin:15px 0;'></view>
-
     <view style='width:94%;margin:0 auto;background:#f1f1f1;padding:6px;box-sizing:border-box;border-radius:6px;margin-top:20px;line-height:20px;'>
       <image mode='widthFix' src='../../image/h1_con_icon_tuij.png' style='width:30px;margin-right:5px;vertical-align:middle;'></image>
       <text style='font-size:12px;color:#aaa;;'>{{details.goods_desc}}</text>
     </view>
-
     <view wx:if='{{show_pics}}' style='margin-top:10px;'>
       <image wx:for='{{details.images}}' wx:key='{{index}}' mode='widthFix' src='{{item}}' style='width:100%;vertical-align: bottom;'></image>
     </view>
-
     <view style='position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-between;padding:5px;box-sizing:border-box;border-top:1rpx solid #f1f1f1;'>
       <view bindtap='collect' style='flex:1;display:flex;flex-direction: column;align-items:center;'>
         <text wx:if='{{!flag}}' style='font-size:20px;' class='icon iconfont icon-collection'></text>
@@ -49,21 +44,20 @@
         <text wx:if='{{flag}}' style='font-size:13px;'>已收藏</text>
       </view>
       <view style='display:flex;flex:4;align-items:center;'>
-        <button form-type='submit' bindtap='goToShare' data-itemid='{{details.itemid}}' size='mini' plain='true' style='flex:1;border:none;border-radius:5px;color:#fff;height:45px;background:#000;display:flex;align-items:center;font-size:13px;flex-direction: column;line-height:1.2;justify-content:center;'>
+        <button wx:if="{{check_we_app}}" form-type='submit' bindtap='goToShare' data-itemid='{{details.itemid}}' size='mini' plain='true' style='flex:1;border:none;border-radius:5px;color:#fff;height:45px;background:#000;display:flex;align-items:center;font-size:13px;flex-direction: column;line-height:1.2;justify-content:center;'>
           <text>分享再赚</text>
           <text>￥{{details.yongjin}}</text>
         </button>
         <navigator version='develop' target='miniProgram' app-id='wx859d5916eb5bf9ad' path='pages/jump_button/jump_button?path={{path}}&appid={{appid}}' hover-class='none' style='flex:1;margin-left:5px;'>
           <button open-type='navigate' form-type='submit' size='mini' plain='true' style='flex:1;border:none;border-radius:5px;color:#fff;height:45px;background:#f42f19;display:flex;align-items:center;font-size:13px;flex-direction: column;line-height:1.2;justify-content:center;'>
-            <text> 自买再省</text>
+            <text>自买再省</text>
             <text>￥{{details.yongjin}}</text>
           </button>
         </navigator>
       </view>
     </view>
   </view>
-
-  <!--比价  -->
+  <!-- 比价 -->
   <view style='position:fixed;top:20%;right:42px;width:100%;z-index:100;transform:translateX({{offset}});transition:all 1s;' wx:if='{{details.parity_goods}}'>
     <view style='float:left;width:42px;height:42px;background:rgba(0,0,0,0.5);color:#fff;border-radius:6px 0 0 6px;transform:translateY(40px);display:flex;align-items:center;' bindtap='compare'>
       <text class='icon iconfont icon-return'></text>
@@ -75,15 +69,20 @@
         <image style='width:20px;position:absolute;top:4px;left:4px;border-radius:10px;background:#fff;' wx:if='{{item.shop_type==2}}' mode='widthFix' src='../../image/icon_t_bao.png'></image>
         <image style='width:100%;height:96px;' mode='widthFix' src='{{item.picurl}}'></image>
         <view style='font-size:12px;'>
-          <view style='overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.title}}</view>
-          <view style='text-align:center;color:#f42f19;' wx:if='{{details.price>item.yh_price}}'>￥{{item.price}}</view>
-          <view style='text-align:center;color:#f42f19;' wx:if='{{details.price<item.yh_price}}'>￥{{item.yh_price}}</view>
+          <view style='overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>
+            {{item.title}}
+          </view>
+          <view style='text-align:center;color:#f42f19;' wx:if='{{details.price>item.yh_price}}'>
+            ￥{{item.price}}
+          </view>
+          <view style='text-align:center;color:#f42f19;' wx:if='{{details.price<item.yh_price}}'>
+            ￥{{item.yh_price}}
+          </view>
         </view>
       </view>
     </scroll-view>
   </view>
-
-  <!--收藏  -->
+  <!-- 收藏 -->
   <view class='collect_box' style='position:fixed;top:45%;right:42px;width:100%;z-index:100;transform:translateX({{_offset}});transition:all 1s;'>
     <view style='float:left;width:42px;height:42px;background:rgba(0,0,0,0.5);color:#fff;border-radius:6px 0 0 6px;transform:translateY(40px);display:flex;align-items:center;' bindtap='show_collect'>
       <text class='icon iconfont icon-return'></text>
@@ -93,39 +92,40 @@
       <view bindtap='show_info' style='display:inline-block;position:relative;width:100px;padding:2px;box-sizing:border-box;' wx:for='{{collect}}' wx:key='{{index}}' bindtap='goToDetail' data-itemid='{{item.itemid}}'>
         <image style='width:100%;' mode='widthFix' src='{{item.picurl}}'></image>
         <view style='font-size:12px;'>
-          <view style='overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.title}}</view>
+          <view style='overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>
+            {{item.title}}
+          </view>
           <view style='text-align:center;color:#f42f19;' wx:if='{{true}}'>￥{{item.price}}</view>
         </view>
       </view>
     </scroll-view>
   </view>
-  <button plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;'
-    bindtap='openShare'>
+  <button wx:if="{{check_we_app}}" plain='true' form-type='submit' style='border:none;width:100px;height:100px;position: fixed;right: 10px;bottom: 20%;font-size: 24px;display: flex;align-items: center;justify-content: center;border-radius:25px;padding:0;margin:0;line-height: 30px;z-index: 99;' bindtap='openShare'>
     <image mode='widthFix' src='../../image/hb.gif' style='width:100%;'></image>
   </button>
-
-  <!--进入客服  -->
+  <!-- 进入客服 -->
   <button bindtap='close_toast2' wx:if='{{show_toast2}}' style='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;' open-type='contact' form-type='submit'>
     <image mode='widthFix' style='width:100%;' src='../../image/contact.png'></image>
   </button>
-
-  <!--mock实时用户  -->
+  <!-- mock实时用户 -->
   <!-- <view style='position:fixed;background:rgba(0,0,0,0.5);top:20px;left:60%;width:50%;border-radius:6px;color:#fff;height:30px;transform:translateX(-50%);font-size:12px;display:flex;align-items:center;padding:0px 5px;' class='mockBox'>
     <view wx:for='{{people}}' wx:if='{{index==nowIndex}}' style='display:flex;align-items:center;padding-left:5px;box-sizing:border-box;'>
       <image mode='widthFix' src='{{item.img}}' style='width:20px;border-radius:50%;'></image>
       <view style='margin-left:5px;'>{{item.username}}正在拼这个商品</view>
     </view>
   </view> -->
-
   <view style='position:fixed;right:0;top:37%;font-size:20rpx;color:#fff;'>
     <view style='position:relative;'>
       <image mode='widthFix' src='../../image/h1_con_icon_commission.png' style='width:160rpx;'></image>
-      <view style='position:absolute;left:75rpx;top:50%;transform:translateY(-50%);'>预计赚￥{{details.yongjin}}</view>
+      <view style='position:absolute;left:75rpx;top:50%;transform:translateY(-50%);'>
+        预计赚￥{{details.yongjin}}
+      </view>
     </view>
     <view style='position:relative;margin-top:10rpx;z-index:100;' bindtap='goToJoin'>
       <image mode='widthFix' src='../../image/h1_con_icon_upgrade.png' style='width:160rpx;'></image>
-      <view style='position:absolute;left:75rpx;top:50%;transform:translateY(-50%);'>升级赚￥{{details.yongjin_vip}}</view>
+      <view style='position:absolute;left:75rpx;top:50%;transform:translateY(-50%);'>
+        升级赚￥{{details.yongjin_vip}}
+      </view>
     </view>
   </view>
-
 </form>
